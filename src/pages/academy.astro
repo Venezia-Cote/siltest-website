@@ -1,0 +1,107 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { courses } from "../data/courses.js";
+
+const provider = { "@type": "Organization", name: "SilTest Academy", url: "https://siltest.com/academy" };
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@graph": courses.map((c) => ({ "@type": "Course", name: c.title, description: c.overview, provider })),
+};
+---
+<Base
+  title="SilTest Academy  hands-on semiconductor test training"
+  description="Practical semiconductor test training on real ATE systems, not simulations. Courses for students, engineers, and corporate teams, in Kleve or on-site, with a certificate on completion."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:820px">
+        <span class="eyebrow">SilTest Academy</span>
+        <h1>Practical training. Real equipment. Industry-ready skills.</h1>
+        <p class="lead">SilTest Academy teaches engineers the skills the industry actually uses. Our courses blend theory, application, and hands-on labs on real ATE systems, not simulations. The people teaching are the same engineers who run test projects.</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href="/contact">Register for course details</a>
+          <a class="btn btn-o" href="#courses">See the courses</a>
+        </div>
+        <div class="pillrow">
+          <span class="pill">real ATE, not simulations</span>
+          <span class="pill">in Kleve or on-site</span>
+          <span class="pill">certificate on completion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Who it is for</span><h2>From first job to a full team</h2></div>
+      <div class="cap3">
+        <div class="capcard rv"><div class="ci">Students and graduates</div><h3>Get ahead early</h3><p>Real lab exposure and industry-aligned knowledge that helps you stand out before your first role.</p></div>
+        <div class="capcard rv"><div class="ci">Junior engineers and technicians</div><h3>Build confidence</h3><p>Formalize your test knowledge, sharpen your debugging, and see how real production test works.</p></div>
+        <div class="capcard rv"><div class="ci">Corporate teams</div><h3>Onboard faster</h3><p>Structured programs tailored to your own equipment and flows, to bring new engineers up to speed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Core courses</span><h2>Four courses on offer</h2><p>Each one blends structured sessions with practical labs and real test scenarios.</p></div>
+      <div class="courses4">
+        {courses.map((c) => (
+          <a class="course rv" href={`/academy/${c.slug}`}>
+            {c.upcoming && <div class="soon">Dates soon</div>}
+            <div class="cnum">/ {c.num}</div>
+            <h3>{c.title}</h3>
+            <p>{c.overview.split(". ")[0]}.</p>
+            <div class="viewd">View course details &rarr;</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT RUNS -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">How it runs</span><h2>Practical, and close to the work</h2></div>
+      <div class="cap3">
+        <div class="capcard rv"><div class="ci">Where</div><h3>Kleve or your site</h3><p>In person at our facility in Kleve, or on-site at your company for group programs. Online and hybrid formats are in development.</p></div>
+        <div class="capcard rv"><div class="ci">How</div><h3>Theory plus labs</h3><p>Structured sessions, then practical labs and real test scenarios. We train you like you are already on the job.</p></div>
+        <div class="capcard rv"><div class="ci">Platforms</div><h3>Vendor-agnostic</h3><p>Concepts and workflows that carry across systems, with real work on Advantest, Teradyne, and other platforms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Questions</span><h2>Good to know</h2></div>
+      <div class="faq rv">
+        <details><summary>Do I need prior experience?</summary><p>No prior experience is needed for the basics. For the ATE course, a little background in electronics or semiconductors helps, but we guide you through the full learning curve.</p></details>
+        <details><summary>Are the courses theoretical or hands-on?</summary><p>Both. You learn the principles in structured sessions, then apply them through practical labs, real test scenarios, and equipment interaction.</p></details>
+        <details><summary>Where does the training take place?</summary><p>In person in Kleve, Germany, or on-site at your company for group programs. Custom corporate training is available on request. Online and hybrid formats are in development.</p></details>
+        <details><summary>Will I receive a certificate?</summary><p>Yes. Participants who complete a course and pass the final assessment receive a SilTest Academy Certificate of Completion for their CV or LinkedIn.</p></details>
+        <details><summary>Can I join as an individual, or is it only for companies?</summary><p>Both. We run open-enrollment sessions for individuals and dedicated tracks for corporate teams. If you are unsure which fits, reach out and we will guide you.</p></details>
+        <details><summary>Is the course tied to one vendor?</summary><p>No. We use real ATE tools and platforms, but the content is platform-agnostic, focused on concepts and workflows that apply across systems.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Ready to train smarter?</h2>
+      <p class="rv">Whether you are starting out or scaling a team, the Academy gives you skills that stick.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href="/contact">Register for course details</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/contact">Talk to us</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+// TODO: replace with the real Formspree form endpoint. All submissions go to info@siltest.com.
+const formAction = "https://formspree.io/f/xzdlnyaz";
+---
+<Base
+  title="Contact SilTest Semiconductors"
+  description="Talk to SilTest about the AI tools, engineering services, or the academy. Offices at Technologie-Zentrum Kleve and Qatar Science and Technology Park in Doha, with engineering in Bangalore and sales coverage across Europe, the UK, North America, and South Korea.">
+  <Header />
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:820px">
+        <span class="eyebrow">Contact</span>
+        <h1>How can we help you?</h1>
+        <p class="lead">Tools, services, or training, or just a question. Send us a note and the right person will get back to you. Everything reaches us at info@siltest.com.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <form class="cform rv" action={formAction} method="POST">
+        <div><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+        <div><label for="email">Work email</label><input id="email" name="email" type="email" required /></div>
+        <div><label for="company">Company</label><input id="company" name="company" type="text" /></div>
+        <div><label for="topic">What is it about?</label>
+          <select id="topic" name="topic">
+            <option>The AI tools</option>
+            <option>Engineering services</option>
+            <option>SilTest Academy</option>
+            <option>Careers</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="full"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <div class="full"><button class="btn btn-p" type="submit">Send message</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Our offices</span><h2>Where you will find us</h2></div>
+      <div class="offices">
+        <div class="office rv"><div class="ol">Germany, headquarters</div><h3>Technologie-Zentrum Kleve</h3><p>Kleve, Germany<br />Engineering, management, and the SilTest Academy.</p></div>
+        <div class="office rv"><div class="ol">Qatar</div><h3>Qatar Science and Technology Park</h3><p>Doha, Qatar<br />Engineering and regional work.</p></div>
+      </div>
+      <p class="svc-lead rv" style="margin-top:1.4rem">We also have engineering in Bangalore, India, and local sales contacts who can meet or talk with you across these regions:</p>
+      <div class="pillrow rv" style="margin-top:.8rem">
+        <span class="pill">DACH</span>
+        <span class="pill">UK and Ireland</span>
+        <span class="pill">North America</span>
+        <span class="pill">South Korea</span>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

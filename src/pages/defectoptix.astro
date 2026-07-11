@@ -1,0 +1,192 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// TODO: confirm the final sign-up and sign-in URLs for the DefectOptiX app.
+const signup = "https://defectoptix.siltest.com/";
+const signin = "https://defectoptix.siltest.com/";
+
+const product = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "DefectOptiX",
+  brand: { "@type": "Brand", name: "SilTest Semiconductors" },
+  category: "Outgoing quality estimator for semiconductor test",
+  description:
+    "DefectOptiX estimates outgoing quality (ppm and ppb) from your test and process parameters, with a confidence band from a Monte Carlo simulation and a reverse solver that returns a ranked, costed path to your target.",
+};
+---
+<Base
+  title="DefectOptiX  outgoing quality estimator for semiconductor test"
+  description="DefectOptiX turns your test and process parameters into a modelled outgoing ppm and ppb, with a confidence band and a costed path to your target. Audit-ready for PPAP and IATF 16949. Runs in your browser."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:820px">
+        <span class="eyebrow">Outgoing quality estimator</span>
+        <h1>Know your outgoing ppm, and defend it.</h1>
+        <p class="subhead">Turn test and process parameters into a modelled outgoing quality figure your auditors can trust.</p>
+        <p class="lead">DefectOptiX estimates your outgoing ppm and ppb from the inputs you already have, shows the uncertainty around it, and gives you a costed path to a lower number. It runs in your browser, so your design data never leaves your machine.</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href={signup}>Get free access</a>
+          <a class="btn btn-o" href={signin}>Sign in</a>
+        </div>
+        <div class="pillrow">
+          <span class="pill">forward and reverse</span>
+          <span class="pill">confidence band</span>
+          <span class="pill">audit-ready</span>
+          <span class="pill">runs in your browser</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD SHOT -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="figframe figwide rv">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="/media/defectoptix-dashboard.jpg" alt="DefectOptiX dashboard, showing the estimated outgoing quality, confidence band, and improvement levers" loading="lazy" />
+        <div class="figcap">The DefectOptiX dashboard: estimated outgoing quality, the confidence band, and the ranked levers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">The problem</span>
+        <h2>What is your outgoing ppm?</h2>
+        <p>It is the first question in a quality audit. Test coverage is an input to that number. It is not the number itself.</p>
+      </div>
+      <div class="jmp-grid">
+        <div class="jmp rv"><span class="ji">01</span><div><h3>You cannot back the claim</h3><p>A ppm figure with no model behind it will not survive a customer audit.</p></div></div>
+        <div class="jmp rv"><span class="ji">02</span><div><h3>Escapes get expensive fast</h3><p>One field return can trigger containment, an 8D, and a line-down. The cost is never just the part.</p></div></div>
+        <div class="jmp rv"><span class="ji">03</span><div><h3>Decisions are made blind</h3><p>Add burn-in? Tighten guardbands? Without a model, every one of these is a guess.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WITHOUT / WITH -->
+  <section>
+    <div class="wrap split">
+      <div class="panel rv">
+        <span class="eyebrow">Without DefectOptiX</span>
+        <h3>A number you cannot explain</h3>
+        <ul class="caps" style="margin-top:.6rem">
+          <li>One ppm figure, no model behind it</li>
+          <li>Hard to defend when the auditor asks how</li>
+          <li>Screening and guardband calls made on gut feel</li>
+        </ul>
+      </div>
+      <div class="panel rv" style="border-color:var(--blue)">
+        <span class="eyebrow">With DefectOptiX</span>
+        <h3>A number you can stand behind</h3>
+        <ul class="caps" style="margin-top:.6rem">
+          <li>A modelled ppm and ppb, with a confidence band</li>
+          <li>Every input and step is visible, not a black box</li>
+          <li>A ranked, costed path to your target quality</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">How it works</span>
+        <h2>From your inputs to a number you can defend</h2>
+        <p>Feed in what you already track. DefectOptiX models the outgoing quality, shows the uncertainty, and works backward to the cheapest way to hit your target.</p>
+      </div>
+      <div class="mini rv" style="margin-bottom:1.4rem">
+        <span class="m">process · coverage · screening · targets</span><span class="ar">&rarr;</span>
+        <span class="v">DefectOptiX</span><span class="ar">&rarr;</span>
+        <span class="m">outgoing ppm and ppb · ranked levers</span>
+      </div>
+      <div class="fgroups">
+        <div class="fgroup rv"><div class="fh">The engine</div><ul>
+          <li>A <b>5-layer model</b> across yield, coverage effectiveness, escape compounding, screening, and output</li>
+          <li>Works for <b>digital and analog</b> coverage across your test pipeline</li>
+        </ul></div>
+        <div class="fgroup rv"><div class="fh">The uncertainty</div><ul>
+          <li>A <b>confidence band</b> around the estimate, not a single point</li>
+          <li>Built from a <b>10,000-run Monte Carlo</b> simulation</li>
+        </ul></div>
+        <div class="fgroup rv"><div class="fh">The reverse solver</div><ul>
+          <li>Put in a <b>target ppm</b>, get back a ranked list of actions</li>
+          <li><b>Costed levers</b>, so you spend where it pays off</li>
+        </ul></div>
+        <div class="fgroup rv"><div class="fh">The outputs</div><ul>
+          <li>Dashboard and trade-off view, down to <b>ppb</b> for ASIL-D work</li>
+          <li><b>PDF report</b> and <b>Excel export</b> for audits and reviews</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES + PRESETS -->
+  <section>
+    <div class="wrap split">
+      <div class="panel rv">
+        <span class="eyebrow">Two modes</span>
+        <h3>Forward and reverse</h3>
+        <p>Run it forward to turn parameters into an outgoing quality figure. Run it reverse to turn a target figure into a ranked set of actions.</p>
+      </div>
+      <div class="panel rv">
+        <span class="eyebrow">Per-technology presets</span>
+        <h3>Start from your node</h3>
+        <p>Begin with a preset that matches your work, then adjust.</p>
+        <div class="pillrow" style="margin-top:1rem">
+          <span class="pill">28nm automotive</span>
+          <span class="pill">16nm ADAS</span>
+          <span class="pill">2nm GAA datacenter</span>
+          <span class="pill">custom</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY BAND -->
+  <section class="why">
+    <div class="wrap">
+      <div class="band rv">
+        <div class="bt">Runs in your browser. Your parameters and design data stay on your machine, nothing is uploaded.</div>
+        <div class="btags"><span class="bchip">client-side</span><span class="bchip">no upload</span><span class="bchip">audit-ready</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Built for</span>
+        <h2>The people who own the number</h2>
+      </div>
+      <div class="jmp-grid">
+        <div class="jmp rv"><span class="ji">TE</span><div><h3>Test and DfT engineers</h3><p>Tie coverage and screening to a real outgoing quality figure.</p></div></div>
+        <div class="jmp rv"><span class="ji">QA</span><div><h3>Quality managers</h3><p>Walk into PPAP, IATF 16949, and customer audits with a model you can show.</p></div></div>
+        <div class="jmp rv"><span class="ji">PE</span><div><h3>Product engineers</h3><p>Work at advanced nodes and datacenter parts where escapes are costly.</p></div></div>
+        <div class="jmp rv"><span class="ji">PL</span><div><h3>Program leads</h3><p>Weigh burn-in and guardband choices against cost, before you commit.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Estimate your outgoing quality</h2>
+      <p class="rv">Get free access and put in your own parameters. It runs in your browser.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href={signup}>Get free access</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/contact">Talk to us</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

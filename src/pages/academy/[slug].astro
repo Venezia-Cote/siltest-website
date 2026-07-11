@@ -1,0 +1,129 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { courses } from "../../data/courses.js";
+
+export function getStaticPaths() {
+  return courses.map((c) => ({ params: { slug: c.slug }, props: { course: c } }));
+}
+const { course } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: course.title,
+  description: course.overview,
+  provider: { "@type": "Organization", name: "SilTest Academy", url: "https://siltest.com/academy" },
+};
+---
+<Base title={`${course.title}  SilTest Academy`} description={course.overview}>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:840px">
+        <a class="backlink" href="/academy">&larr; SilTest Academy</a>
+        <span class="eyebrow">Course {course.num}{course.upcoming ? "  ·  dates soon" : ""}</span>
+        <h1>{course.title}</h1>
+        <p class="subhead">{course.tagline}</p>
+        <p class="lead">{course.overview}</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href="/contact">Register for dates and pricing</a>
+          <a class="btn btn-o" href="/academy">All courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="glance rv">
+        <div><div class="gl">Duration</div><div class="gv">{course.glance.duration}</div></div>
+        <div><div class="gl">Format</div><div class="gv">{course.glance.format}</div></div>
+        <div><div class="gl">Delivery</div><div class="gv">{course.glance.delivery}</div></div>
+        <div><div class="gl">Language</div><div class="gv">{course.glance.language}</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO + OBJECTIVES -->
+  <section class="why">
+    <div class="wrap svc-two">
+      <div class="rv">
+        <div class="collbl">Who it is for</div>
+        <ul class="caps">{course.audience.map((a) => <li>{a}</li>)}</ul>
+      </div>
+      <div class="rv">
+        <div class="collbl">What you will learn</div>
+        <ul class="caps">{course.objectives.map((o) => <li>{o}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Curriculum</span><h2>What the course covers</h2></div>
+      <div class="curric">
+        {course.curriculum.map((m) => (
+          <div class="cmod rv">
+            <div class="cmh">{m.title}</div>
+            <ul>{m.items.map((it) => <li>{it}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {course.deliverables && (
+    <section class="why">
+      <div class="wrap">
+        <div class="sec-head rv"><span class="eyebrow">You take away</span><h2>What you leave with</h2></div>
+        <ul class="caps rv" style="max-width:760px">{course.deliverables.map((d) => <li>{d}</li>)}</ul>
+      </div>
+    </section>
+  )}
+
+  <!-- INSTRUCTOR + CERTIFICATE -->
+  <section>
+    <div class="wrap split">
+      <div class="panel rv">
+        <span class="eyebrow">Who teaches it</span>
+        <h3>Taught by working engineers</h3>
+        <p>{course.instructor}</p>
+      </div>
+      <div class="panel rv">
+        <span class="eyebrow">What you earn</span>
+        <h3>A certificate that counts</h3>
+        <p>{course.certificate}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Questions</span><h2>Good to know</h2></div>
+      <div class="faq rv">
+        {course.faq.map((f) => (
+          <details><summary>{f.q}</summary><p>{f.a}</p></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Join this course</h2>
+      <p class="rv">Register your interest and we will send you the next dates, the price, and everything you need.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href="/contact">Register for details</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/academy">Back to Academy</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

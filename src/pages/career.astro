@@ -1,0 +1,102 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const roles = [
+  { title: "AI and LLM Engineering Intern", loc: "Doha", type: "Full-time, hybrid",
+    sum: "Work on VISTAR, our AI platform. Help build test program generation, LLM and retrieval pipelines, and agentic workflows that solve real test problems.",
+    skills: ["Python", "LLMs and RAG", "Automation", "Curiosity"] },
+  { title: "Senior Test Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
+    sum: "Own new product introduction on ATE: test program development, bring-up, characterization, and production release, with a sharp eye on yield and test cost.",
+    skills: ["Advantest V93000, SmarTest 8", "Teradyne UltraFLEX", "Test program development", "Characterization"] },
+  { title: "Design for Test (DFT) Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
+    sum: "Drive DFT architecture and implementation: ATPG, scan, MBIST, and JTAG, through coverage closure and silicon bring-up.",
+    skills: ["ATPG and scan", "MBIST and JTAG", "Tessent, TestMAX", "SystemVerilog"] },
+  { title: "Design Verification Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
+    sum: "Verify digital blocks and SoCs: build testbenches, drive coverage, and take designs to closure in SystemVerilog and UVM.",
+    skills: ["SystemVerilog", "UVM", "Coverage closure", "Simulation and debug"] },
+];
+---
+<Base
+  title="Careers  SilTest Semiconductors"
+  description="Come build the future with us. Join a focused, engineering-driven team building AI tools that move the semiconductor industry forward. Open roles in AI, test, DFT, and verification.">
+  <Header />
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:840px">
+        <span class="eyebrow">Careers</span>
+        <h1>Come build the future with us</h1>
+        <p class="lead">We are not just solving engineering problems. We are building the tools and systems that move the semiconductor industry forward, across every stage of the chip lifecycle. We look for people who think boldly, move fast, and value clarity over complexity.</p>
+        <div class="hero-cta"><a class="btn btn-p" href="#roles">See open roles</a><a class="btn btn-o" href="/leadership">Meet the team</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURE -->
+  <section class="why">
+    <div class="wrap svc-two">
+      <div class="rv">
+        <div class="collbl">Our culture</div>
+        <p class="svc-lead">Culture is not an afterthought here, it is the foundation of how we work. We are a focused, engineering-driven team that values clarity over chaos and momentum over noise. It is built for people who want to solve real problems and grow alongside others who care just as much.</p>
+      </div>
+      <div class="rv">
+        <div class="collbl">How we work</div>
+        <ul class="caps">
+          <li>Everyone is trusted to own their work and question assumptions</li>
+          <li>Lean structure, direct communication, clear priorities</li>
+          <li>Purpose and humility alongside technical excellence</li>
+          <li>Build responsibly, think long-term, make every project count</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELIEFS -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">What we believe in</span><h2>We build with purpose and grow through collaboration</h2></div>
+      <div class="jmp-grid">
+        <div class="jmp rv"><span class="ji">01</span><div><h3>Technical depth, first</h3><p>Engineering precision and practical problem-solving over trendy solutions. If it does not work under pressure, it does not ship.</p></div></div>
+        <div class="jmp rv"><span class="ji">02</span><div><h3>Ownership over hierarchy</h3><p>Everyone has the space to lead and the responsibility to contribute. Good ideas can come from anywhere.</p></div></div>
+        <div class="jmp rv"><span class="ji">03</span><div><h3>Collaboration without borders</h3><p>A global-minded team across time zones and backgrounds. Diverse perspectives build better tools.</p></div></div>
+        <div class="jmp rv"><span class="ji">04</span><div><h3>Learning through building</h3><p>You work on real tools used by real teams in production. Steep learning curves, and visible outcomes.</p></div></div>
+        <div class="jmp rv"><span class="ji">05</span><div><h3>Focused execution</h3><p>Lean and intentional. Fewer meetings, more building. Trust instead of control.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM STRIP -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Who you would work with</span><h2>A team that has done it before</h2><p>You would join senior engineers and builders from across the industry.</p></div>
+      <div class="team-strip rv"><img src="/media/team/sameer-saran.jpg" alt="" loading="lazy" /><img src="/media/team/amber-kumar.jpg" alt="" loading="lazy" /><img src="/media/team/rahul-hakhoo.jpg" alt="" loading="lazy" /><img src="/media/team/michael-matauschek.jpg" alt="" loading="lazy" /><img src="/media/team/elena-novikova.jpg" alt="" loading="lazy" /><img src="/media/team/ritesh-patel.jpg" alt="" loading="lazy" /><img src="/media/team/febeesh-kodakkadan.jpg" alt="" loading="lazy" /><img src="/media/team/emanoele-tavora.jpg" alt="" loading="lazy" /></div>
+      <div class="rv" style="margin-top:1.2rem"><a class="link-arrow" href="/leadership">Meet the full team <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section id="roles">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Open roles</span><h2>Where we are hiring</h2><p>These roles are open on a rolling basis. If one fits, tell us about yourself.</p></div>
+      <div class="roles">
+        {roles.map((r) => (
+          <div class="role rv">
+            <div class="rh">
+              <div><div class="rtitle">{r.title}</div><div class="rmeta">{r.loc}  ·  {r.type}</div></div>
+              <a class="btn btn-p" href="/contact">Apply</a>
+            </div>
+            <div class="rbody">
+              <p class="rsum">{r.sum}</p>
+              <div class="rskills">{r.skills.map((s) => <span class="pill">{s}</span>)}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="svc-lead rv" style="margin-top:1.6rem">If your experience and mindset align with SilTest, we would love to hear from you. Send your CV and a short cover letter to <b>careers@siltest.com</b>, or <a class="link-arrow" href="/contact">introduce yourself here <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

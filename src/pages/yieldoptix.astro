@@ -1,0 +1,60 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/yieldoptix-amber.css";
+import yoBody from "../content/yieldoptix-body.html?raw";
+
+const product = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "YieldOptiX",
+  brand: { "@type": "Brand", name: "SilTest Semiconductors" },
+  category: "Semiconductor test data analytics, JMP plugin",
+  description:
+    "YieldOptiX turns STDF into yield decisions inside JMP: fast loading, wafer maps, bin analysis, drift, and machine learning for root cause. Also runs through the VISTAR platform by natural-language prompt.",
+  offers: [
+    { "@type": "Offer", name: "STDF Loader", price: "9", priceCurrency: "EUR" },
+    { "@type": "Offer", name: "YieldOptiX, single user", price: "99", priceCurrency: "EUR" },
+  ],
+};
+---
+<Base
+  title="YieldOptiX  yield intelligence for semiconductor test"
+  description="YieldOptiX turns STDF into yield decisions without leaving JMP: fast loading, wafer maps, bin analysis, drift, and machine learning for root cause. Run it in JMP or through the VISTAR platform."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
+  <Fragment set:html={yoBody} />
+  <Footer />
+  <script is:inline>
+    (function () {
+      const grid = document.getElementById("price-grid");
+      const tog = document.getElementById("billtoggle");
+      if (grid && tog) {
+        tog.addEventListener("click", (e) => {
+          const b = e.target.closest(".bt-opt");
+          if (!b) return;
+          tog.querySelectorAll(".bt-opt").forEach((x) => x.classList.toggle("active", x === b));
+          const annual = b.getAttribute("data-mode") === "a";
+          grid.classList.toggle("annual", annual);
+          grid.querySelectorAll("a.buy").forEach((a) =>
+            a.setAttribute("href", annual ? a.getAttribute("data-a") : a.getAttribute("data-m"))
+          );
+        });
+      }
+      document.addEventListener("click", (e) => {
+        const box = e.target.closest(".ytlite");
+        if (!box) return;
+        const id = box.getAttribute("data-id");
+        if (!id || id === "PLACEHOLDER") return;
+        const ifr = document.createElement("iframe");
+        ifr.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+        ifr.allow = "autoplay; encrypted-media; picture-in-picture";
+        ifr.allowFullscreen = true;
+        box.innerHTML = "";
+        box.appendChild(ifr);
+      });
+    })();
+  </script>
+</Base>

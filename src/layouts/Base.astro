@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+const { title, description, lang = "en" } = Astro.props;
+import "../styles/global.css";
+
+const org = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SilTest Semiconductors",
+  url: "https://siltest.com",
+  logo: "https://siltest.com/logos/lockup.png",
+  email: "info@siltest.com",
+  description:
+    "SilTest builds and licenses AI tools that make semiconductor chip testing and production faster and less manual.",
+  address: [
+    { "@type": "PostalAddress", addressLocality: "Kleve", addressCountry: "DE" },
+    { "@type": "PostalAddress", addressLocality: "Doha", addressCountry: "QA" },
+    { "@type": "PostalAddress", addressLocality: "Bangalore", addressCountry: "IN" },
+  ],
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, "https://siltest.com").href} />
+    <!-- hreflang: English default at root, German at /de -->
+    <link rel="alternate" hreflang="en" href="https://siltest.com/" />
+    <link rel="alternate" hreflang="de" href="https://siltest.com/de/" />
+    <link rel="alternate" hreflang="x-default" href="https://siltest.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(org)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const io = new IntersectionObserver(
+        (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

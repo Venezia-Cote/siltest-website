@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const initials = (n) => n.replace(/^Dr\.?\s+/i, "").split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+const team = [
+  { name: "Sameer Saran", role: "Founder and CEO", photo: "sameer-saran" },
+  { name: "Amber Kumar", role: "Co-Founder and CTO", photo: "amber-kumar" },
+  { name: "Rahul Hakhoo", role: "Technical Director", photo: "rahul-hakhoo" },
+  { name: "Michael Matauschek", role: "Business Development, DACH", photo: "michael-matauschek" },
+  { name: "Ritesh Patel", role: "Business Development, North America", photo: "ritesh-patel" },
+  { name: "Febeesh Kodakkadan", role: "Business Development, Middle East", photo: "febeesh-kodakkadan" },
+  { name: "James Kahn", role: "Partner, South Korea", photo: "james-kahn" },
+  { name: "Emanoele Tavora", role: "Human Resources", photo: "emanoele-tavora" },
+  { name: "Elena Novikova", role: "Sales and Marketing", photo: "elena-novikova" },
+];
+const advisory = [
+  { name: "Dr Frank Poehl", role: "Advisory Board", photo: "frank-poehl" },
+  { name: "Alexander Tan", role: "Advisory Board", photo: "alexander-tan" },
+  { name: "Dr Pradeep Chatterjee", role: "Advisory Board", photo: "pradeep-chatterjee" },
+];
+---
+<Base
+  title="Leadership and team  SilTest Semiconductors"
+  description="The people behind SilTest: an experienced, global team of semiconductor professionals across engineering, business development, and an advisory board.">
+  <Header />
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:820px">
+        <span class="eyebrow">Leadership and team</span>
+        <h1>The people behind SilTest</h1>
+        <p class="lead">A senior, global team of semiconductor professionals. Between us we have built products, teams, and test operations at scale, and we bring that experience to every tool we build and every project we take on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">The team</span><h2>Working across Europe, the Middle East, and Asia</h2></div>
+      <div class="people-grid">
+        {team.map((m) => (
+          <div class="person rv">
+            <img class="pimg" src={`/media/team/${m.photo}.jpg`} alt={m.name} loading="lazy" />
+            <div class="pn">{m.name}</div>
+            <div class="pr">{m.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Advisory board</span><h2>Guiding the direction</h2></div>
+      <div class="people-grid adv">
+        {advisory.map((m) => (
+          <div class="person rv">
+            {m.photo
+              ? <img class="pimg" src={`/media/team/${m.photo}.jpg`} alt={m.name} loading="lazy" />
+              : <div class="pini">{initials(m.name)}</div>}
+            <div class="pn">{m.name}</div>
+            <div class="pr">{m.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Want to join us?</h2>
+      <p class="rv">We are a lean team that moves fast and owns its work. If that sounds like you, take a look at our open roles.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href="/career">See open roles</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/contact">Talk to us</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

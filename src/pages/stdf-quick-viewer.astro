@@ -1,0 +1,208 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// TODO: confirm the browser app URL and the Pro checkout link.
+const viewer = "https://app.stdf.siltest.com/";
+const proCheckout = "https://buy.stripe.com/9B6fZhb5T6iY1kCeXng7e0c"; // STDF Quick Viewer Pro, monthly
+
+const product = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "STDF Quick Viewer",
+  brand: { "@type": "Brand", name: "SilTest Semiconductors" },
+  category: "Browser-based STDF viewer for semiconductor test",
+  description:
+    "STDF Quick Viewer opens STDF files in your browser. Parametric summary, wafer maps, and yield in seconds, with no install and no account for the free tier. Files are parsed in the browser, so data never leaves the computer.",
+  offers: [
+    { "@type": "Offer", name: "Free", price: "0", priceCurrency: "EUR" },
+    { "@type": "Offer", name: "Pro", price: "19", priceCurrency: "EUR" },
+  ],
+};
+---
+<Base
+  title="STDF Quick Viewer  open STDF files in your browser, free"
+  description="Open any STDF file in your browser. Parametric summary, wafer maps, and yield in seconds. No install, no account for the free tier, and your data never leaves your computer."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="rv in">
+        <span class="eyebrow">STDF, in your browser</span>
+        <h1>Open any STDF file in your browser. <span>Free.</span></h1>
+        <p class="lead">Parametric summary, wafer maps, and yield in seconds. No install, and no account for the free tier. Your file is parsed in the browser, so your data never leaves your computer.</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href={viewer}>Open the viewer</a>
+          <a class="btn btn-o" href="#pricing">See pricing</a>
+        </div>
+        <div class="pillrow">
+          <span class="pill">no install</span>
+          <span class="pill">no account needed</span>
+          <span class="pill">from EUR 0</span>
+        </div>
+      </div>
+      <div class="rv in">
+        <div class="decode">
+          <div class="flow-bar"><span>stdf // parsed in browser</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="dec-row">
+            <div class="hexcol">00 0A <b>00 10</b> 4C 4F 54 31 32 33 08 57 61 66 65 72 2D 30 31 <b>1F 04</b> 9C 3B 41 54 45 5F 56 39 33 4B 0A 50 41 53 53 2E 2E 2E</div>
+            <div class="arrowmid">&rarr;</div>
+            <div class="parsed">
+              <div class="prow"><span>Lot</span><span>LOT123</span></div>
+              <div class="prow"><span>Wafer</span><span>Wafer-01</span></div>
+              <div class="prow"><span>Parts</span><span>5,120</span></div>
+              <div class="prow"><span>Yield</span><span class="good">98.6%</span></div>
+              <div class="prow"><span>Tester</span><span>V93K</span></div>
+            </div>
+          </div>
+          <div class="flow-foot"><span>opened in your browser</span><span class="ok">nothing uploaded</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">The problem</span>
+        <h2>Just looking inside an STDF is harder than it should be</h2>
+      </div>
+      <div class="jmp-grid">
+        <div class="jmp rv"><span class="ji">01</span><div><h3>STDF is not readable</h3><p>It is a binary format. You need a tool or a script just to see what is inside.</p></div></div>
+        <div class="jmp rv"><span class="ji">02</span><div><h3>The big tools are heavy</h3><p>Enterprise platforms need licenses, installs, and setup for what should be a quick look.</p></div></div>
+        <div class="jmp rv"><span class="ji">03</span><div><h3>Sharing means uploading</h3><p>Passing data around often means sending your file to someone else's server.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="why">
+    <div class="wrap">
+      <div class="band rv">
+        <div class="bt">Your file is parsed in your browser. It never leaves your computer, and there is nothing to upload.</div>
+        <div class="btags"><span class="bchip">in-browser</span><span class="bchip">no upload</span><span class="bchip">no account needed</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN DO -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">What you can do</span>
+        <h2>Enough to answer the first questions</h2>
+      </div>
+      <div class="fgroups">
+        <div class="fgroup rv"><div class="fh">In the free viewer</div><ul>
+          <li><b>Parametric summary</b> and yield</li>
+          <li><b>Wafer map</b> and bin chart</li>
+          <li>Lot header information</li>
+          <li>Up to <b>3 files a day</b>, 50 MB each, no account</li>
+        </ul></div>
+        <div class="fgroup rv"><div class="fh">In Pro</div><ul>
+          <li>Everything in the free viewer</li>
+          <li><b>Cpk and Ppk</b> per parameter</li>
+          <li><b>PDF export</b> of your view</li>
+          <li><b>Multi-file lot trends</b>, unlimited files up to 500 MB</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOT A REPLACEMENT -->
+  <section class="why">
+    <div class="wrap split">
+      <div class="panel rv">
+        <span class="eyebrow">What it is</span>
+        <h3>A faster first look</h3>
+        <p>Open a file, read the yield, check a wafer map, and move on. It is built to answer the first questions in seconds.</p>
+      </div>
+      <div class="panel rv">
+        <span class="eyebrow">What it is not</span>
+        <h3>Not a replacement</h3>
+        <p>If your team runs an enterprise yield platform, keep it. This does not try to replace that. For deep work, step up to YieldOptiX.</p>
+        <a class="link-arrow" href="/yieldoptix">See YieldOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Who it is for</span>
+        <h2>For a quick look without the overhead</h2>
+        <p>Small teams and individuals who do not want a heavy license or an install to read an STDF.</p>
+      </div>
+      <div class="pillrow rv">
+        <span class="pill">test engineers</span>
+        <span class="pill">product engineers</span>
+        <span class="pill">OSATs</span>
+        <span class="pill">fabless startups</span>
+        <span class="pill">ATE service firms</span>
+        <span class="pill">IC designers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Pricing</span>
+        <h2>Free to start, Pro when you need more</h2>
+      </div>
+      <div class="price-grid">
+        <div class="pcard rv">
+          <div class="pname">Free</div>
+          <div class="pprice">&euro;0</div>
+          <div class="pdesc">No account. Up to 3 files a day, 50 MB each. Parametric summary, yield, wafer map, and bin chart.</div>
+          <a class="btn btn-o" href={viewer}>Open the viewer</a>
+        </div>
+        <div class="pcard feat rv">
+          <div class="ptag">Most popular</div>
+          <div class="pname">Pro</div>
+          <div class="pprice">&euro;19 <small>/ month</small></div>
+          <div class="pdesc">One engineer seat. Unlimited files up to 500 MB, Cpk and Ppk, PDF export, and multi-file lot trends.</div>
+          <a class="btn btn-p" href={proCheckout}>Get Pro</a>
+        </div>
+        <div class="pcard rv">
+          <div class="pname">Team</div>
+          <div class="pprice">Custom</div>
+          <div class="pdesc">For a group of engineers who all want the Pro features. Sized to your team.</div>
+          <a class="btn btn-o" href="/contact">Contact sales</a>
+        </div>
+      </div>
+      <div class="price-note">The free viewer needs no account. Pro is a single engineer seat.</div>
+    </div>
+  </section>
+
+  <!-- UPSELL -->
+  <section>
+    <div class="wrap">
+      <div class="inline-cta rv">
+        <div>
+          <div class="ict">When a first look is not enough</div>
+          <p>YieldOptiX does the deep analysis: machine learning for root cause, drift, screen and release, and more, inside JMP.</p>
+        </div>
+        <a class="btn btn-p" href="/yieldoptix">See YieldOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Open your STDF now</h2>
+      <p class="rv">No install, no account. Just open the viewer and drop in a file.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href={viewer}>Open the viewer</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="#pricing">See pricing</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

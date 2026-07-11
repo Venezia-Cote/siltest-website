@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const partners = [
+  { logo: "/media/partners/silicon-saxony.png", name: "Silicon Saxony", tag: "Member", url: "https://www.silicon-saxony.de/",
+    text: "One of Europe's largest microelectronics and ICT networks, based in Saxony. Our membership keeps us connected to the wider European semiconductor community." },
+  { logo: "/media/partners/bavarian-chips-alliance.png", name: "Bavarian Chips Alliance", tag: "Official partner", url: "",
+    text: "An alliance building up Bavaria's semiconductor ecosystem. As an official partner, we contribute test and engineering expertise to the network." },
+  { logo: "/media/partners/wellmatix.png", name: "Wellmatix", tag: "South Korea", url: "https://well-matix.com/",
+    text: "Our partner in South Korea, helping us reach local customers and bring our tools and services closer to the Korean semiconductor industry. The two companies signed a strategic partnership at Semiconductors Korea 2026, under the EU Business Hub program." },
+  { logo: "/media/partners/alpinum.png", name: "Alpinum Consulting", tag: "United Kingdom", url: "https://alpinumconsulting.com/",
+    text: "Represents SilTest in the United Kingdom, helping connect us with customers in the UK market." },
+];
+---
+<Base
+  title="Partnerships  SilTest Semiconductors"
+  description="SilTest works with industry networks and regional partners: Silicon Saxony, the Bavarian Chips Alliance, Wellmatix in South Korea, and Alpinum Consulting in the UK. Incubated at QSTP and an ExciteLab alumnus.">
+  <Header />
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:820px">
+        <span class="eyebrow">Partnerships</span>
+        <h1>The networks and partners we work with</h1>
+        <p class="lead">We build with the wider industry, through European semiconductor networks and regional partners who help us reach customers close to home.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="partners-grid">
+        {partners.map((p) => (
+          <div class="partner rv">
+            <div class="plogo"><img src={p.logo} alt={p.name} loading="lazy" /></div>
+            <div class="ptag">{p.tag}</div>
+            <h3>{p.name}</h3>
+            <p>{p.text}</p>
+            {p.url && <div class="plink"><a class="link-arrow" href={p.url} target="_blank" rel="noopener">Visit site <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Incubators</span><h2>Where we started</h2><p>SilTest was selected by two prestigious programs, in Qatar and in Germany. As we grow in Doha, our home at QSTP puts us at the center of Qatar's technology ecosystem.</p></div>
+      <div class="affil-big rv">
+        <div class="ab">
+          <div class="abimg"><img src="/logos/qstp.jpg" alt="Qatar Science and Technology Park" /></div>
+          <div class="abc">Incubated at</div>
+          <div class="abt">Qatar Science and Technology Park</div>
+          <p>Our base in Doha, and part of the Qatar Foundation. QSTP connects us to Qatar's growing semiconductor and technology community.</p>
+        </div>
+        <div class="ab">
+          <div class="abimg"><img src="/logos/excitelab.png" alt="ExciteLab" /></div>
+          <div class="abc">Alumni</div>
+          <div class="abt">ExciteLab High-Tech Accelerator</div>
+          <p>A premier high-tech startup accelerator in Germany, where SilTest was selected and grew its early foundation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Partner with us</h2>
+      <p class="rv">If you work in the semiconductor ecosystem and see a fit, we would like to talk.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href="/contact">Get in touch</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

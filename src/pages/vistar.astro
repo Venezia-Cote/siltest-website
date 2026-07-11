@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/vistar-amber.css";
+import vistarBody from "../content/vistar-body.html?raw";
+
+const product = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "VISTAR",
+  brand: { "@type": "Brand", name: "SilTest Semiconductors" },
+  category: "AI platform for semiconductor engineering",
+  description:
+    "VISTAR is the SilTest AI platform for semiconductor engineering. It combines an analytical engine with generative and agentic AI on open-source language models, deployed on-prem or in a private cloud, with modules for test program generation, platform conversion, and debug.",
+};
+---
+<Base
+  title="VISTAR  deterministic AI for semiconductor engineering"
+  description="VISTAR is SilTest's AI platform for chip engineering: an analytical engine with generative and agentic AI on open-source LLMs, on-prem or in your private cloud. Modules for test program generation, platform conversion, and debug."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
+  <Fragment set:html={vistarBody} />
+  <Footer />
+</Base>

@@ -1,0 +1,55 @@
+---
+// Shared site header. Nav is data-driven so pages stay consistent.
+const products = [
+  { name: "VISTAR", note: "AI platform for test and production", href: "/vistar" },
+  { name: "YieldOptiX", note: "ML analytics for test data", href: "/yieldoptix" },
+  { name: "DefectOptiX", note: "Outgoing quality estimator", href: "/defectoptix" },
+  { name: "STDF Quick Viewer", note: "Open any STDF file, free", href: "/stdf-quick-viewer" },
+];
+const services = [
+  { name: "Design for Test", href: "/services#design-for-test" },
+  { name: "Hardware Design", href: "/services#hardware-design" },
+  { name: "Test Engineering", href: "/services#test-engineering" },
+  { name: "Packaging and Qualification", href: "/services#packaging-qualification" },
+  { name: "Yield Management", href: "/services#yield-management" },
+];
+const company = [
+  { name: "About", href: "/about" },
+  { name: "Leadership", href: "/leadership" },
+  { name: "Partnerships", href: "/partnerships" },
+  { name: "Career", href: "/career" },
+];
+---
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><img src="/logos/wordmark.png" alt="SilTest Semiconductors" /></a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <span>Products <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        <div class="menu">
+          {products.map((p) => (
+            <a href={p.href}><b>{p.name}</b><span>{p.note}</span></a>
+          ))}
+        </div>
+      </div>
+      <div class="nav-item">
+        <span>Services <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        <div class="menu">
+          {services.map((s) => (<a href={s.href}><b>{s.name}</b></a>))}
+        </div>
+      </div>
+      <div class="nav-item"><a href="/academy">Academy</a></div>
+      <div class="nav-item">
+        <span>Company <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        <div class="menu">
+          {company.map((c) => (<a href={c.href}><b>{c.name}</b></a>))}
+        </div>
+      </div>
+    </nav>
+    <div class="nav-right">
+      <span class="lang"><b>EN</b> / DE</span>
+      <a class="btn btn-p" href="/contact">Book a demo</a>
+    </div>
+    <span class="burger">Menu</span>
+  </div>
+</header>
