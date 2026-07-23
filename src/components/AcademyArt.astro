@@ -1,0 +1,163 @@
+---
+// Inline SVG artwork for the Academy page.
+// Kept as code (not images) so it stays crisp, responsive, and easy to edit.
+const { kind } = Astro.props;
+
+// wafer die grid for the test-cell illustration
+const rows = 9;
+const cells = [];
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < rows; c++) {
+    const dx = c - (rows - 1) / 2;
+    const dy = r - (rows - 1) / 2;
+    if (Math.sqrt(dx * dx + dy * dy) <= (rows - 1) / 2 + 0.25) {
+      const seed = (r * 7 + c * 13) % 10;
+      cells.push({ x: c * 11, y: r * 11, tone: seed === 3 ? "b" : seed === 7 ? "c" : "a" });
+    }
+  }
+}
+---
+
+{kind === "testcell" && (
+  <svg class="acart acart-cell" viewBox="0 0 520 400" role="img" aria-label="An ATE test cell: tester, load board, and device under test">
+    <defs>
+      <linearGradient id="rack" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#12336d" /><stop offset="1" stop-color="#0a1f4a" />
+      </linearGradient>
+      <linearGradient id="pulse" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#20BDFF" stop-opacity="0" />
+        <stop offset="0.5" stop-color="#20BDFF" stop-opacity="1" />
+        <stop offset="1" stop-color="#20BDFF" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+
+    {/* tester rack */}
+    <rect x="22" y="66" width="132" height="272" rx="12" fill="url(#rack)" stroke="#27467f" />
+    <text x="88" y="92" class="acl" text-anchor="middle">ATE TESTER</text>
+    {[0, 1, 2, 3, 4].map((i) => (
+      <g>
+        <rect x="38" y={108 + i * 44} width="100" height="32" rx="6" fill="#0b2350" stroke="#284b86" />
+        <circle cx="52" cy={124 + i * 44} r="4" fill={i < 3 ? "#20BDFF" : "#2b4a80"} />
+        <rect x="64" y={119 + i * 44} width={i % 2 ? 40 : 58} height="4" rx="2" fill="#1d3a6b" />
+      </g>
+    ))}
+
+    {/* signal bundle */}
+    <path d="M154 202 C196 202 196 176 238 176" fill="none" stroke="#27467f" stroke-width="2" />
+    <path d="M154 214 C196 214 196 240 238 240" fill="none" stroke="#27467f" stroke-width="2" />
+    <path d="M154 208 C196 208 196 208 238 208" fill="none" stroke="url(#pulse)" stroke-width="3">
+      <animate attributeName="stroke-dasharray" values="0 90;90 0" dur="2.4s" repeatCount="indefinite" />
+    </path>
+
+    {/* load board */}
+    <rect x="238" y="150" width="124" height="116" rx="10" fill="#0d2a5c" stroke="#2a4f8c" />
+    <text x="300" y="140" class="acl" text-anchor="middle">LOAD BOARD</text>
+    {[0, 1, 2, 3].map((i) => (
+      <rect x={252 + i * 28} y="166" width="16" height="10" rx="2" fill="#1b3f77" />
+    ))}
+    {[0, 1, 2, 3].map((i) => (
+      <rect x={252 + i * 28} y="240" width="16" height="10" rx="2" fill="#1b3f77" />
+    ))}
+    <rect x="278" y="190" width="44" height="36" rx="5" fill="#081c42" stroke="#20BDFF" stroke-width="1.5" />
+    <text x="300" y="213" class="acm" text-anchor="middle">DUT</text>
+
+    {/* wafer */}
+    <g transform="translate(392,146)">
+      <circle cx="49" cy="49" r="58" fill="#08183a" stroke="#27467f" />
+      <g transform="translate(4,4)">
+        {cells.map((c) => (
+          <rect x={c.x} y={c.y} width="9" height="9" rx="1.5"
+            fill={c.tone === "b" ? "#20BDFF" : c.tone === "c" ? "#e0a03a" : "#14406f"} />
+        ))}
+      </g>
+      <text x="49" y="126" class="acl" text-anchor="middle">WAFER</text>
+    </g>
+
+    <text x="22" y="378" class="acm">real equipment, real data, real debug</text>
+  </svg>
+)}
+
+{kind === "path" && (
+  <svg class="acart acart-path" viewBox="0 0 1080 300" role="img" aria-label="Learning path from foundation to advanced, plus a leadership track">
+    <defs>
+      <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0 0 L9 4.5 L0 9 z" fill="#008CFF" />
+      </marker>
+    </defs>
+
+    <text x="26" y="34" class="ptrack">ENGINEER TRACK</text>
+    <line x1="26" y1="48" x2="1054" y2="48" stroke="#E4E0D6" />
+
+    {[
+      { x: 40, n: "02", t: "Basics of", t2: "Semiconductor Testing", lv: "Foundation" },
+      { x: 400, n: "03", t: "Chip Testing", t2: "Using ATEs", lv: "Advanced" },
+      { x: 760, n: "01", t: "JMP and YieldOptiX", t2: "for Data Analysis", lv: "Intermediate" },
+    ].map((s, i) => (
+      <g>
+        <rect x={s.x} y="72" width="280" height="104" rx="14" fill="#fff" stroke="#E4E0D6" />
+        <text x={s.x + 22} y="102" class="pnum">/ {s.n}</text>
+        <text x={s.x + 22} y="128" class="ptitle">{s.t}</text>
+        <text x={s.x + 22} y="150" class="ptitle">{s.t2}</text>
+        <rect x={s.x + 22} y="158" width={s.lv.length * 7 + 18} height="20" rx="10" fill="#E8F2FF" />
+        <text x={s.x + 31} y="172" class="plevel">{s.lv}</text>
+        {i < 2 && <line x1={s.x + 292} y1="124" x2={s.x + 348} y2="124" stroke="#008CFF" stroke-width="2" marker-end="url(#ar)" />}
+      </g>
+    ))}
+
+    <text x="26" y="234" class="ptrack">LEADERSHIP TRACK</text>
+    <line x1="26" y1="248" x2="1054" y2="248" stroke="#E4E0D6" />
+    <rect x="40" y="262" width="280" height="30" rx="14" fill="#010C2B" />
+    <text x="60" y="282" class="pdark">/ 04  DfT for Managers</text>
+    <text x="342" y="282" class="pnote">no DfT background needed, built for people who decide</text>
+  </svg>
+)}
+
+{kind === "flow" && (
+  <svg class="acart acart-flow" viewBox="0 0 1080 190" role="img" aria-label="How a course runs, from theory to certificate">
+    <defs>
+      <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0 0 L9 4.5 L0 9 z" fill="#20BDFF" />
+      </marker>
+    </defs>
+    {[
+      { t: "Theory", s: "structured sessions" },
+      { t: "Guided lab", s: "on real ATE" },
+      { t: "Real scenario", s: "your own cases" },
+      { t: "Assessment", s: "end of course test" },
+      { t: "Certificate", s: "for your CV" },
+    ].map((s, i) => {
+      const x = 16 + i * 212;
+      const last = i === 4;
+      return (
+        <g>
+          <rect x={x} y="40" width="188" height="96" rx="14"
+            fill={last ? "#010C2B" : "rgba(255,255,255,.06)"}
+            stroke={last ? "#20BDFF" : "rgba(255,255,255,.16)"} />
+          <circle cx={x + 30} cy="70" r="13" fill={last ? "#008CFF" : "rgba(32,189,255,.16)"} stroke="#20BDFF" />
+          <text x={x + 30} y="75" class="fnum" text-anchor="middle">{i + 1}</text>
+          <text x={x + 54} y="76" class="ftitle">{s.t}</text>
+          <text x={x + 22} y="112" class="fsub">{s.s}</text>
+          {i < 4 && <line x1={x + 192} y1="88" x2={x + 208} y2="88" stroke="#20BDFF" stroke-width="2" marker-end="url(#ar2)" />}
+        </g>
+      );
+    })}
+  </svg>
+)}
+
+{kind === "cert" && (
+  <svg class="acart acart-cert" viewBox="0 0 420 300" role="img" aria-label="SilTest Academy certificate of completion">
+    <rect x="14" y="16" width="392" height="268" rx="16" fill="#fff" stroke="#E4E0D6" />
+    <rect x="14" y="16" width="392" height="8" rx="4" fill="#008CFF" />
+    <text x="210" y="72" class="cke" text-anchor="middle">SILTEST ACADEMY</text>
+    <text x="210" y="112" class="cti" text-anchor="middle">Certificate of Completion</text>
+    <line x1="120" y1="132" x2="300" y2="132" stroke="#E4E0D6" />
+    <text x="210" y="164" class="cnm" text-anchor="middle">Your name here</text>
+    <text x="210" y="190" class="csb" text-anchor="middle">Chip Testing Using ATEs</text>
+    <g transform="translate(186,206)">
+      <circle cx="24" cy="24" r="23" fill="none" stroke="#008CFF" stroke-width="2" />
+      <circle cx="24" cy="24" r="17" fill="#E8F2FF" />
+      <path d="M16 24 l6 6 l11 -12" fill="none" stroke="#008CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="210" y="278" class="csm" text-anchor="middle">issued on completion and a passed assessment</text>
+  </svg>
+)}

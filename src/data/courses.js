@@ -3,6 +3,8 @@
 export const courses = [
   {
     slug: "jmp-yieldoptix",
+    level: "Intermediate",
+    track: "analysis",
     num: "01",
     title: "JMP and YieldOptiX for Semiconductor Data Analysis",
     tagline: "Unlock test and yield insights like never before",
@@ -65,6 +67,8 @@ export const courses = [
   },
   {
     slug: "basics-of-semiconductor-testing",
+    level: "Foundation",
+    track: "core",
     num: "02",
     title: "Basics of Semiconductor Testing",
     tagline: "Explore the world of chip testing",
@@ -114,6 +118,8 @@ export const courses = [
   },
   {
     slug: "chip-testing-using-ates",
+    level: "Advanced",
+    track: "core",
     num: "03",
     title: "Chip Testing Using ATEs",
     tagline: "Master ATE platforms for real-world chip testing",
@@ -163,13 +169,34 @@ export const courses = [
   },
   {
     slug: "dft-for-managers",
+    level: "Leadership",
+    track: "leadership",
+    nextDate: "3 + 4 August",
+    enrolment: {
+      open: true,
+      dateLabel: "3 and 4 August 2026",
+      dateShort: "3 + 4 Aug 2026",
+      delivery: "Online, live with the instructor",
+      hours: "2 days, 4 hours a day",
+      time: "14:00 to 18:00 CET",
+      price: "899",
+      currency: "EUR",
+      priceNote: "per seat, excluding VAT",
+      checkout: "https://buy.stripe.com/7sYbJ18XL8r6e7o02tg7e03",
+      includes: [
+        "Two live sessions with the instructor, not a recording",
+        "Course workbook and the DfT Manager's quick guide",
+        "RACI chart, project timeline and milestone checklist templates",
+        "Certificate on completion, after a short assessment",
+      ],
+    },
     num: "04",
     title: "DfT for Managers",
     tagline: "Build smarter test strategies",
     overview:
-      "A two-day course that gives people and program managers a strategic and technical grasp of Design for Test and the wider Design for Excellence ideas. Learn to work well with design and test teams, weigh trade-offs, and make informed decisions. Delivered on-site or remotely, structured around your own workflows and tools.",
+      "A two-day course that gives people and program managers a strategic and technical grasp of Design for Test and the wider Design for Excellence ideas. Learn to work well with design and test teams, weigh trade-offs, and make informed decisions.",
     upcoming: true,
-    glance: { duration: "2 days, 4 hours a day", format: "Lecture, walkthroughs, and case studies", delivery: "On-site or remote", language: "English" },
+    glance: { duration: "2 days, 4 hours a day", format: "Lecture, walkthroughs, and case studies", delivery: "Online, or on-site for teams", language: "English" },
     audience: [
       "Engineering managers",
       "Program managers",
@@ -213,9 +240,9 @@ export const courses = [
     certificate:
       "Participants receive a DfT for Managers credential, certified by SilTest, after a short assessment.",
     faq: [
-      { q: "Is this online or in person?", a: "Both. It runs on-site at your company or remotely, whichever suits your team." },
+      { q: "Is this online or in person?", a: "The 3 and 4 August session runs online, live with the instructor, 14:00 to 18:00 CET on both days. For a private team session we can also come on-site." },
       { q: "How technical is it?", a: "It is built for technical managers. Some familiarity with product development helps, but it does not assume a DfT engineering background." },
-      { q: "Do you offer team pricing?", a: "Yes. Corporate and team rates are available on request." },
+      { q: "Do you offer team pricing?", a: "Yes. Reduced per-seat rates apply for several colleagues, and we can run a private session on your own workflows. Ask us for a quote." },
     ],
   },
 ];

@@ -3,9 +3,9 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-// TODO: confirm the browser app URL and the Pro checkout link.
 const viewer = "https://app.stdf.siltest.com/";
-const proCheckout = "https://buy.stripe.com/9B6fZhb5T6iY1kCeXng7e0c"; // STDF Quick Viewer Pro, monthly
+const proMonthly = "https://buy.stripe.com/9B6fZhb5T6iY1kCeXng7e0c"; // STDF Quick Viewer Pro, monthly
+const proAnnual = "https://buy.stripe.com/fZuaEXb5T8r6gfw2aBg7e0d";  // STDF Quick Viewer Pro, annual (12 for the price of 11)
 
 const product = {
   "@context": "https://schema.org",
@@ -17,7 +17,8 @@ const product = {
     "STDF Quick Viewer opens STDF files in your browser. Parametric summary, wafer maps, and yield in seconds, with no install and no account for the free tier. Files are parsed in the browser, so data never leaves the computer.",
   offers: [
     { "@type": "Offer", name: "Free", price: "0", priceCurrency: "EUR" },
-    { "@type": "Offer", name: "Pro", price: "19", priceCurrency: "EUR" },
+    { "@type": "Offer", name: "Pro, monthly", price: "19", priceCurrency: "EUR" },
+    { "@type": "Offer", name: "Pro, annual", price: "209", priceCurrency: "EUR" },
   ],
 };
 ---
@@ -123,9 +124,9 @@ const product = {
         <p>Open a file, read the yield, check a wafer map, and move on. It is built to answer the first questions in seconds.</p>
       </div>
       <div class="panel rv">
-        <span class="eyebrow">What it is not</span>
-        <h3>Not a replacement</h3>
-        <p>If your team runs an enterprise yield platform, keep it. This does not try to replace that. For deep work, step up to YieldOptiX.</p>
+        <span class="eyebrow">Where it stops</span>
+        <h3>Your yield platform stays</h3>
+        <p>If your team runs an enterprise yield platform, keep it. This is the quick look beside it. For deep work, step up to YieldOptiX.</p>
         <a class="link-arrow" href="/yieldoptix">See YieldOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
       </div>
     </div>
@@ -157,7 +158,11 @@ const product = {
         <span class="eyebrow">Pricing</span>
         <h2>Free to start, Pro when you need more</h2>
       </div>
-      <div class="price-grid">
+      <div class="billtoggle rv" id="billtoggle">
+        <button class="bt-opt" data-mode="m" type="button">Monthly</button>
+        <button class="bt-opt active" data-mode="a" type="button">Annual, one month free</button>
+      </div>
+      <div class="price-grid annual" id="price-grid">
         <div class="pcard rv">
           <div class="pname">Free</div>
           <div class="pprice">&euro;0</div>
@@ -167,9 +172,10 @@ const product = {
         <div class="pcard feat rv">
           <div class="ptag">Most popular</div>
           <div class="pname">Pro</div>
-          <div class="pprice">&euro;19 <small>/ month</small></div>
+          <div class="pprice"><span class="pm">&euro;19 <small>/ month</small></span><span class="pa">&euro;209 <small>/ year</small></span></div>
+          <div class="psave">12 months for the price of 11</div>
           <div class="pdesc">One engineer seat. Unlimited files up to 500 MB, Cpk and Ppk, PDF export, and multi-file lot trends.</div>
-          <a class="btn btn-p" href={proCheckout}>Get Pro</a>
+          <a class="btn btn-p buy" href={proAnnual} data-m={proMonthly} data-a={proAnnual}>Get Pro</a>
         </div>
         <div class="pcard rv">
           <div class="pname">Team</div>
@@ -178,7 +184,7 @@ const product = {
           <a class="btn btn-o" href="/contact">Contact sales</a>
         </div>
       </div>
-      <div class="price-note">The free viewer needs no account. Pro is a single engineer seat.</div>
+      <div class="price-note">The free viewer needs no account. Pro is a single engineer seat. Annual billing gives you twelve months for the price of eleven.</div>
     </div>
   </section>
 
@@ -205,4 +211,21 @@ const product = {
   </section>
 
   <Footer />
+  <script is:inline>
+    (function () {
+      const grid = document.getElementById("price-grid");
+      const tog = document.getElementById("billtoggle");
+      if (!grid || !tog) return;
+      tog.addEventListener("click", (e) => {
+        const b = e.target.closest(".bt-opt");
+        if (!b) return;
+        tog.querySelectorAll(".bt-opt").forEach((x) => x.classList.toggle("active", x === b));
+        const annual = b.getAttribute("data-mode") === "a";
+        grid.classList.toggle("annual", annual);
+        grid.querySelectorAll("a.buy").forEach((a) =>
+          a.setAttribute("href", annual ? a.getAttribute("data-a") : a.getAttribute("data-m"))
+        );
+      });
+    })();
+  </script>
 </Base>

@@ -1,0 +1,79 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { posts } from "../../data/posts.js";
+
+export function getStaticPaths() {
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+const article = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.title,
+  datePublished: post.date,
+  author: { "@type": "Organization", name: "SilTest Semiconductors GmbH" },
+  publisher: { "@type": "Organization", name: "SilTest Semiconductors GmbH" },
+  description: post.excerpt,
+};
+---
+<Base title={`${post.title}  SilTest Semiconductors`} description={post.excerpt}>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(article)} slot="head" />
+
+  <article class="post">
+    <section class="hero">
+      <div class="wrap">
+        <a class="backlink rv in" href="/news">&#8592; All news</a>
+        <div class="rv in" style="max-width:800px">
+          <div class="pmeta"><span class="pcat">{post.category}</span><span>{post.dateLabel}</span><span>{post.readingTime}</span></div>
+          <h1>{post.title}</h1>
+          <p class="lead">{post.excerpt}</p>
+        </div>
+      </div>
+    </section>
+
+    {post.image && (
+      <div class="wrap"><div class="postimg rv"><img src={post.image} alt={post.imageAlt} /></div></div>
+    )}
+
+    <section style="padding-top:2.2rem">
+      <div class="wrap"><div class="prose rv" set:html={post.body} /></div>
+    </section>
+
+    {post.gallery && post.gallery.length > 0 && (
+      <section style="padding-top:0">
+        <div class="wrap">
+          <div class="postgallery rv">
+            {post.gallery.map((g) => (
+              <figure><img src={g.src} alt={g.alt} loading="lazy" /><figcaption>{g.alt}</figcaption></figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </article>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Keep reading</span><h2>More from SilTest</h2></div>
+      <div class="postgrid">
+        {others.map((p) => (
+          <a class="postcard rv" href={`/news/${p.slug}`}>
+            {p.image
+              ? <div class="pc-img"><img src={p.image} alt={p.imageAlt} loading="lazy" /></div>
+              : <div class="pc-img pc-abstract"><span>{p.category}</span></div>}
+            <div class="pc-body">
+              <div class="pmeta"><span class="pcat">{p.category}</span><span>{p.dateLabel}</span></div>
+              <h3>{p.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

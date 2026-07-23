@@ -1,0 +1,85 @@
+---
+// Compliance traceability map for the CertOptiX page.
+// Shows activities on the left, the requirement behind each, and the standard
+// that drives it. Amber marks where two activities satisfy the same requirement.
+const activities = [
+  { y: 60, t: "Monthly ESD audit walk", dup: false },
+  { y: 128, t: "Quarterly ESD floor check", dup: true },
+  { y: 196, t: "ESD compliance verification", dup: true },
+  { y: 264, t: "Supplier evidence pack", dup: false },
+  { y: 332, t: "Calibration log review", dup: false },
+];
+
+const standards = [
+  { y: 78, t: "ANSI/ESD S20.20", c: "#e0a03a" },
+  { y: 160, t: "IATF 16949", c: "#008CFF" },
+  { y: 242, t: "ISO 9001", c: "#008CFF" },
+  { y: 324, t: "ISO 14001", c: "#008CFF" },
+];
+
+// activity index -> standard index
+const links = [
+  { a: 0, s: 0, dup: false },
+  { a: 1, s: 0, dup: true },
+  { a: 2, s: 0, dup: true },
+  { a: 3, s: 1, dup: false },
+  { a: 3, s: 2, dup: false },
+  { a: 4, s: 2, dup: false },
+  { a: 4, s: 3, dup: false },
+];
+
+const AX = 300;   // right edge of activity boxes
+const SX = 640;   // left edge of standard chips
+---
+
+<svg class="cxmap" viewBox="0 0 1000 420" role="img"
+     aria-label="Compliance activities traced to the requirement and standard behind them, with duplicated effort highlighted">
+  <text x="14" y="26" class="cxh">WHAT YOUR PEOPLE ACTUALLY DO</text>
+  <text x={SX} y="26" class="cxh">WHAT REQUIRES IT</text>
+
+  {links.map((l) => {
+    const a = activities[l.a];
+    const s = standards[l.s];
+    const y1 = a.y + 22;
+    const y2 = s.y + 16;
+    const mid = (AX + SX) / 2;
+    return (
+      <path d={`M${AX} ${y1} C${mid} ${y1} ${mid} ${y2} ${SX} ${y2}`}
+        fill="none" stroke={l.dup ? "#e0a03a" : "#c9d3e4"}
+        stroke-width={l.dup ? 2.4 : 1.6} stroke-dasharray={l.dup ? "6 4" : "0"} />
+    );
+  })}
+
+  {activities.map((a) => (
+    <g>
+      <rect x="14" y={a.y} width="286" height="44" rx="10"
+        fill={a.dup ? "#FDF6E7" : "#ffffff"} stroke={a.dup ? "#e0a03a" : "#E4E0D6"} />
+      <text x="32" y={a.y + 28} class="cxa">{a.t}</text>
+    </g>
+  ))}
+
+  {standards.map((s) => (
+    <g>
+      <rect x={SX} y={s.y} width="200" height="32" rx="16" fill="#fff" stroke={s.c} stroke-width="1.6" />
+      <circle cx={SX + 18} cy={s.y + 16} r="4" fill={s.c} />
+      <text x={SX + 32} y={s.y + 21} class="cxs">{s.t}</text>
+    </g>
+  ))}
+
+  {/* the finding */}
+  <g>
+    <rect x="860" y="60" width="126" height="120" rx="12" fill="#FDF6E7" stroke="#e0a03a" />
+    <text x="923" y="88" class="cxfh" text-anchor="middle">FINDING</text>
+    <text x="923" y="116" class="cxfn" text-anchor="middle">3 activities</text>
+    <text x="923" y="138" class="cxfs" text-anchor="middle">one requirement</text>
+    <text x="923" y="162" class="cxfs" text-anchor="middle">2 are duplicates</text>
+  </g>
+
+  <line x1="14" y1="392" x2="986" y2="392" stroke="#E4E0D6" />
+  <g>
+    <line x1="14" y1="410" x2="46" y2="410" stroke="#c9d3e4" stroke-width="1.6" />
+    <text x="56" y="414" class="cxlg">traced and justified</text>
+    <line x1="216" y1="410" x2="248" y2="410" stroke="#e0a03a" stroke-width="2.4" stroke-dasharray="6 4" />
+    <text x="258" y="414" class="cxlg">same requirement, done more than once</text>
+  </g>
+</svg>

@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { courses } from "../data/courses.js";
+import AcademyArt from "../components/AcademyArt.astro";
 
 const provider = { "@type": "Organization", name: "SilTest Academy", url: "https://siltest.com/academy" };
 const courseSchema = {
@@ -12,28 +13,29 @@ const courseSchema = {
 ---
 <Base
   title="SilTest Academy  hands-on semiconductor test training"
-  description="Practical semiconductor test training on real ATE systems, not simulations. Courses for students, engineers, and corporate teams, in Kleve or on-site, with a certificate on completion."
+  description="Practical semiconductor test training on real ATE systems. Courses for students, engineers, and corporate teams, in Kleve or on-site, with a certificate on completion."
 >
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} slot="head" />
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="rv in" style="max-width:820px">
+  <section class="hero acad-hero">
+    <div class="wrap acad-hero-grid">
+      <div class="rv in">
         <span class="eyebrow">SilTest Academy</span>
         <h1>Practical training. Real equipment. Industry-ready skills.</h1>
-        <p class="lead">SilTest Academy teaches engineers the skills the industry actually uses. Our courses blend theory, application, and hands-on labs on real ATE systems, not simulations. The people teaching are the same engineers who run test projects.</p>
+        <p class="lead">SilTest Academy teaches engineers the skills the industry actually uses. Our courses blend theory, application, and hands-on labs on real ATE systems. The people teaching are the same engineers who run test projects.</p>
         <div class="hero-cta">
           <a class="btn btn-p" href="/contact">Register for course details</a>
           <a class="btn btn-o" href="#courses">See the courses</a>
         </div>
         <div class="pillrow">
-          <span class="pill">real ATE, not simulations</span>
+          <span class="pill">hands-on, on real ATE</span>
           <span class="pill">in Kleve or on-site</span>
           <span class="pill">certificate on completion</span>
         </div>
       </div>
+      <div class="acad-hero-art rv in"><AcademyArt kind="testcell" /></div>
     </div>
   </section>
 
@@ -55,11 +57,19 @@ const courseSchema = {
       <div class="sec-head rv"><span class="eyebrow">Core courses</span><h2>Four courses on offer</h2><p>Each one blends structured sessions with practical labs and real test scenarios.</p></div>
       <div class="courses4">
         {courses.map((c) => (
-          <a class="course rv" href={`/academy/${c.slug}`}>
-            {c.upcoming && <div class="soon">Dates soon</div>}
-            <div class="cnum">/ {c.num}</div>
+          <a class={`course rv lvl-${c.level.toLowerCase()}`} href={`/academy/${c.slug}`}>
+            {c.enrolment?.open
+              ? <div class="soon open">Enrolling &middot; {c.nextDate}</div>
+              : c.nextDate ? <div class="soon next">Next: {c.nextDate}</div>
+              : c.upcoming && <div class="soon">Dates soon</div>}
+            <div class="chead"><span class="cnum">/ {c.num}</span><span class="clevel">{c.level}</span></div>
             <h3>{c.title}</h3>
             <p>{c.overview.split(". ")[0]}.</p>
+            <div class="cglance">
+              <span>{c.glance.duration}</span>
+              <span>{c.glance.delivery}</span>
+              {c.enrolment?.open && <span class="cprice">{c.enrolment.currency} {c.enrolment.price}</span>}
+            </div>
             <div class="viewd">View course details &rarr;</div>
           </a>
         ))}
@@ -67,14 +77,43 @@ const courseSchema = {
     </div>
   </section>
 
+  <!-- LEARNING PATH -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Where to start</span><h2>A path, not a catalogue</h2><p>Most engineers work through the track in order. Managers can take the leadership course on its own.</p></div>
+      <div class="artcard rv"><AcademyArt kind="path" /></div>
+    </div>
+  </section>
+
   <!-- HOW IT RUNS -->
   <section>
     <div class="wrap">
       <div class="sec-head rv"><span class="eyebrow">How it runs</span><h2>Practical, and close to the work</h2></div>
+      <div class="flowband rv"><AcademyArt kind="flow" /></div>
       <div class="cap3">
         <div class="capcard rv"><div class="ci">Where</div><h3>Kleve or your site</h3><p>In person at our facility in Kleve, or on-site at your company for group programs. Online and hybrid formats are in development.</p></div>
         <div class="capcard rv"><div class="ci">How</div><h3>Theory plus labs</h3><p>Structured sessions, then practical labs and real test scenarios. We train you like you are already on the job.</p></div>
         <div class="capcard rv"><div class="ci">Platforms</div><h3>Vendor-agnostic</h3><p>Concepts and workflows that carry across systems, with real work on Advantest, Teradyne, and other platforms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATE -->
+  <section class="why">
+    <div class="wrap">
+      <div class="certgrid">
+        <div class="rv">
+          <span class="eyebrow">What you leave with</span>
+          <h2 class="certh2">Proof, and something you can use.</h2>
+          <ul class="certlist">
+            <li><b>A certificate</b> for your CV and LinkedIn, issued after the final assessment</li>
+            <li><b>Working templates</b> such as RACI charts, checklists and project timelines</li>
+            <li><b>Hands-on hours</b> on Advantest, Teradyne and other real platforms</li>
+            <li><b>A direct line</b> to the engineers who taught you, after the course ends</li>
+          </ul>
+          <div class="cta-row"><a class="btn btn-p" href="/contact">Ask about the next dates</a></div>
+        </div>
+        <div class="rv certart"><AcademyArt kind="cert" /></div>
       </div>
     </div>
   </section>

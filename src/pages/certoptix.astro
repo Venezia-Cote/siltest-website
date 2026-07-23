@@ -1,0 +1,349 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CertMap from "../components/CertMap.astro";
+
+const pipeline = [
+  { n: "1", h: "Ingest", p: "Your procedures, audit records, CAPA, training matrices and approval workflows." },
+  { n: "2", h: "Extract with evidence", p: "Every activity is logged with its department, frequency and a verbatim excerpt. No excerpt, no entry." },
+  { n: "3", h: "Trace to the requirement", p: "Each activity is mapped to the requirement that actually demands it, across ISO, IATF, ESD and customer drivers." },
+  { n: "4", h: "Score deterministically", p: "A versioned model sets priority, not the AI. Anything carrying high customer risk is held back for validation." },
+  { n: "5", h: "Report and defend", p: "Evidence, traceability, scored findings, and a phased roadmap with a validation method for every change." },
+];
+
+const calcRows = [
+  { name: "External audit preparation", occ: "2", hrs: "120" },
+  { name: "Internal audit programme", occ: "24", hrs: "8" },
+  { name: "Documentation and record keeping", occ: "52", hrs: "6" },
+  { name: "Approval workflows", occ: "200", hrs: "1" },
+  { name: "CAPA and 8D", occ: "40", hrs: "12" },
+  { name: "Training and calibration records", occ: "12", hrs: "10" },
+];
+
+const lightFeatures = [
+  "Guided site profile and standards scoping",
+  "Upload a limited document set: selected procedures, audit checklists, CAPA or 8D samples, training and calibration records",
+  "Compliance workload summary across departments",
+  "Requirement traceability check against ISO, IATF, ESD and environmental drivers",
+  "Top duplicated and over-controlled processes",
+  "Top simplification opportunities, with risk rating and validation method",
+  "Missing information and clarification questions",
+  "Savings line items, quantified by your team with your own figures",
+  "Executive summary report, export ready",
+];
+const proFeatures = [
+  "Everything in Light",
+  "Full QMS document library ingestion, multi-site and multi-department",
+  "Evidence table: every activity carries a verbatim excerpt and its source document",
+  "Requirement library mapping across ISO 9001, IATF 16949, ISO 14001 and ANSI/ESD S20.20, plus internal and customer drivers",
+  "Deterministic priority scoring, versioned model, high compliance or customer risk gated to Validate first",
+  "Compliance workload heatmap by department and activity category",
+  "Audit evidence readiness score, with requirement areas that have no mapped activity",
+  "Review workflow: accept, reject or annotate every finding before it enters the report",
+  "Phased implementation roadmap and an audit-safe change justification package",
+  "Continuous monitoring of new procedures and audit findings",
+];
+
+const engagements = [
+  { name: "Light Diagnostic", dur: "2 to 4 weeks", who: "A single site wanting to size the opportunity before committing.", scope: "Selected document set, guided analysis, executive summary and next steps.", featured: false },
+  { name: "Pro Assessment", dur: "6 to 10 weeks", who: "One site preparing a defensible workload reduction case for management.", scope: "Full QMS library, evidence-backed findings, deterministic scoring, and review workshops with your quality team.", featured: true },
+  { name: "Pro Platform", dur: "Custom", who: "Multi-site groups and OSATs running continuous improvement programmes.", scope: "Multi-site ingestion, continuous monitoring, a management dashboard, and role-based access. Scoped to your sites and run as a continuous engagement.", featured: false },
+];
+
+const product = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "CertOptiX",
+  brand: { "@type": "Brand", name: "SilTest Semiconductors" },
+  category: "Compliance workload optimization for semiconductor manufacturing",
+  description:
+    "CertOptiX is a VISTAR module that maps the compliance work a site actually performs, traces every activity to the requirement that demands it, and shows where effort is duplicated or over-controlled. Certification intact, audit confidence intact, workload cut.",
+};
+---
+<Base
+  title="CertOptiX  cut compliance workload, keep audit confidence"
+  description="CertOptiX maps the compliance work your site actually performs, traces every activity to the requirement that demands it, and shows where the effort is duplicated or over-controlled. A VISTAR module for OSATs and automotive semiconductor sites."
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap cx-hero-grid">
+      <div class="rv in">
+        <span class="eyebrow">VISTAR module</span>
+        <h1>Cut the workload behind <span>your certifications</span>.</h1>
+        <p class="lead">CertOptiX maps the compliance work your site actually performs, traces every activity back to the requirement that demands it, and shows you where the effort is duplicated, over-controlled, or no longer linked to anything external at all.</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href="#assessment">See the assessment output</a>
+          <a class="btn btn-o" href="#estimator">Estimate your workload</a>
+        </div>
+        <div class="pillrow">
+          <span class="pill">certification intact</span>
+          <span class="pill">audit confidence intact</span>
+          <span class="pill">workload cut</span>
+        </div>
+      </div>
+      <div class="rv in">
+        <div class="cx-viz">
+          <svg viewBox="0 0 548 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compliance activities traced to the requirements that demand them. Activities with a strong requirement stay. Activities with a weak or absent driver are candidates for simplification.">
+            <text x="14" y="26" font-family="ui-monospace,monospace" font-size="10" letter-spacing="1" fill="rgba(255,255,255,.4)">WHAT YOUR SITE DOES</text>
+            <text x="534" y="26" text-anchor="end" font-family="ui-monospace,monospace" font-size="10" letter-spacing="1" fill="rgba(255,255,255,.4)">WHAT IS REQUIRED</text>
+            <path d="M202 59 C 280 59, 300 87, 384 87" fill="none" stroke="#008CFF" stroke-width="1.4"/><path d="M202 101 C 280 101, 300 171, 384 171" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M202 143 C 280 143, 300 255, 384 255" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M202 185 C 280 185, 300 87, 384 87" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M202 227 C 280 227, 300 87, 384 87" fill="none" stroke="#008CFF" stroke-width="1.4"/><path d="M202 269 C 280 269, 300 87, 384 87" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M202 311 C 280 311, 300 171, 384 171" fill="none" stroke="#008CFF" stroke-width="1.4"/>
+            <rect x="14" y="44" width="188" height="30" rx="7" fill="rgba(0,140,255,.14)" stroke="#008CFF"/><text x="26" y="63" font-family="ui-monospace,monospace" font-size="11" fill="#fff">Internal audit</text><rect x="14" y="86" width="188" height="30" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.22)"/><text x="26" y="105" font-family="ui-monospace,monospace" font-size="11" fill="rgba(255,255,255,.62)">Layered process audit</text><rect x="14" y="128" width="188" height="30" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.22)"/><text x="26" y="147" font-family="ui-monospace,monospace" font-size="11" fill="rgba(255,255,255,.62)">ESD log countersign</text><rect x="14" y="170" width="188" height="30" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.22)"/><text x="26" y="189" font-family="ui-monospace,monospace" font-size="11" fill="rgba(255,255,255,.62)">Training matrix rebuild</text><rect x="14" y="212" width="188" height="30" rx="7" fill="rgba(0,140,255,.14)" stroke="#008CFF"/><text x="26" y="231" font-family="ui-monospace,monospace" font-size="11" fill="#fff">Calibration checks</text><rect x="14" y="254" width="188" height="30" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.22)"/><text x="26" y="273" font-family="ui-monospace,monospace" font-size="11" fill="rgba(255,255,255,.62)">5-signatory approval</text><rect x="14" y="296" width="188" height="30" rx="7" fill="rgba(0,140,255,.14)" stroke="#008CFF"/><text x="26" y="315" font-family="ui-monospace,monospace" font-size="11" fill="#fff">CAPA / 8D</text>
+            <rect x="384" y="66" width="150" height="42" rx="8" fill="rgba(0,140,255,.12)" stroke="#20BDFF"/><text x="459" y="92" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#20BDFF">ISO 9001</text><rect x="384" y="150" width="150" height="42" rx="8" fill="rgba(0,140,255,.12)" stroke="#20BDFF"/><text x="459" y="176" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#20BDFF">IATF 16949</text><rect x="384" y="234" width="150" height="42" rx="8" fill="rgba(0,140,255,.12)" stroke="#20BDFF"/><text x="459" y="260" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#20BDFF">ANSI/ESD S20.20</text>
+          </svg>
+          <div class="cx-vizcap">
+            <span><b>solid</b> traced to a requirement</span>
+            <span><b>dashed</b> weak or no clear driver</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">The problem</span>
+        <h2>Every control was added for a good reason. Together they add up.</h2>
+        <p>A back-end site running ISO 9001, IATF 16949, ISO 14001 and ANSI/ESD S20.20 has four compliance systems layered over a decade. Every finding added a control. Almost nothing was ever removed.</p>
+      </div>
+      <div class="cxmapcard rv"><CertMap /></div>
+      <p class="svc-lead rv" style="margin:1.4rem 0 1.8rem">The work is spread across departments, so no single manager ever sees the total. It is paid every year in indirect labor, by your quality engineers, process engineers and shift leaders.</p>
+    </div>
+  </section>
+
+  <!-- ESTIMATOR -->
+  <section id="estimator">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Estimator</span>
+        <h2>What is one audit cycle actually costing you?</h2>
+        <p>Put in your own occurrences, hours and rate. Nothing here is our estimate. The greyed figures are examples only.</p>
+      </div>
+      <div class="cx-calc rv">
+        <div class="cx-crow cx-chead">
+          <span>Compliance activity</span><span>Occurrences per year</span><span>Hours each</span><span>Hours per year</span>
+        </div>
+        {calcRows.map((r) => (
+          <div class="cx-crow" data-row>
+            <span class="cx-cname">{r.name}</span>
+            <input type="number" min="0" data-occ placeholder={r.occ} />
+            <input type="number" min="0" data-hrs placeholder={r.hrs} />
+            <span class="cx-cout" data-out>0</span>
+          </div>
+        ))}
+        <div class="cx-cfoot">
+          <div class="cx-rate">
+            <label for="cxrate">Loaded indirect labor rate, EUR per hour</label>
+            <input id="cxrate" type="number" min="0" placeholder="75" />
+          </div>
+          <div class="cx-totals">
+            <div><span>Total hours per year</span><strong id="cxHours">0</strong></div>
+            <div><span>Annual cost</span><strong id="cxEur">EUR 0</strong></div>
+            <div class="cx-reduce">
+              <span>If CertOptiX removes just <b id="cxpctLabel">20</b>% of it<input id="cxpct" type="range" min="5" max="50" value="20" /></span>
+              <strong id="cxSave">EUR 0<em>per year, every year</em></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="price-note rv" style="margin-top:1rem">The reduction slider is a what-if. What CertOptiX does guarantee is that every hour it proposes to remove is traced to a document, mapped to a requirement, risk-rated, and given a validation method before you touch anything.</p>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">How it works</span>
+        <h2>CertOptiX finds the workload that is not doing any work</h2>
+      </div>
+      <div class="cx-pipe">
+        {pipeline.map((s) => (
+          <div class="cx-step rv">
+            <div class="n">{s.n}</div>
+            <h3>{s.h}</h3>
+            <p>{s.p}</p>
+          </div>
+        ))}
+      </div>
+      <div class="panel rv" style="margin-top:1.8rem;border-color:var(--blue)">
+        <span class="eyebrow">The principle</span>
+        <h3>The AI explains. The rules decide.</h3>
+        <p>In a certified environment, a recommendation nobody can trace is worth nothing. The AI reads documents, extracts activities and drafts findings. Priority, risk gating and every number in your savings case come from deterministic, versioned logic, printed in the methodology section of every report.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF, GATED -->
+  <section id="assessment" class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">What you get</span>
+        <h2>A findings report your auditor can follow</h2>
+        <p>A CertOptiX assessment typically returns 20 to 40 findings. Each one carries a verbatim excerpt from your own document, the requirement behind it, a risk rating, and a validation method to prove the change is safe before you make it.</p>
+      </div>
+
+      <div class="cx-proof">
+        <div class="cx-sample rv">
+          <div class="cx-sample-bar"><span>SAMPLE FINDING</span><span class="cx-sample-id">F-02</span></div>
+          <h3>Three ESD verification activities satisfy one requirement</h3>
+          <div class="cx-sample-meta">
+            <span class="cx-pill">Consolidation</span>
+            <span class="cx-pill green">Benefit: high</span>
+            <span class="cx-pill">Quality, Manufacturing</span>
+          </div>
+          <p>Monthly audit walk, quarterly floor check and an annual verification all trace to the same clause of ANSI/ESD S20.20. Two are duplicates of the third in scope and frequency.</p>
+          <div class="cx-sample-foot">
+            <b>Evidence</b> QM-114 rev 6, section 4.2, verbatim excerpt attached
+          </div>
+          <div class="cx-blur">
+            <div class="cx-blur-line"></div><div class="cx-blur-line short"></div>
+            <div class="cx-blur-line"></div><div class="cx-blur-line med"></div>
+            <div class="cx-blur-tag">+ 27 more findings in the full report</div>
+          </div>
+        </div>
+
+        <div class="cx-ask rv">
+          <span class="eyebrow">See the real thing</span>
+          <h3>Ask for the sample assessment</h3>
+          <p>We will send you a full anonymised report, so you can see the evidence tables, the traceability, and how the findings are scored and prioritised.</p>
+          <ul class="cx-asklist">
+            <li>Full sample assessment as a PDF</li>
+            <li>Or a live walkthrough of the tool on a call</li>
+            <li>No obligation, and nothing about your site is needed to start</li>
+          </ul>
+          <div class="cta-row"><a class="btn btn-p" href="/contact">Request the sample report</a></div>
+        </div>
+      </div>
+
+      <div class="band bandfull rv" style="margin-top:1.8rem">
+        <div class="bt">CertOptiX never recommends removing a control a standard, a regulator or a customer requires. It does not replace your auditors, and it never invents a savings number. Every figure comes from your own occurrences, hours and rates.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHO THIS IS FOR -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Who this is for</span>
+        <h2>Sites carrying real certification obligations</h2>
+      </div>
+      <div class="cap3" style="grid-template-columns:repeat(4,1fr)">
+        <div class="capcard rv"><div class="ci">Back end</div><h3>OSAT and assembly and test sites</h3><p>Where the audits, the evidence and the approvals all land at once.</p></div>
+        <div class="capcard rv"><div class="ci">Automotive</div><h3>Automotive semiconductor manufacturing</h3><p>IATF obligations, customer-specific requirements, and the workload that comes with both.</p></div>
+        <div class="capcard rv"><div class="ci">Components</div><h3>Electronics and components manufacturers</h3><p>Any site carrying ISO, IATF and ESD obligations side by side.</p></div>
+        <div class="capcard rv"><div class="ci">Teams</div><h3>Quality, operations, EHS, engineering, and site leadership</h3><p>The people who carry the compliance load, and the ones who own the budget for it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO START -->
+  <section id="start" class="why">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">How to start</span>
+        <h2>Start with a diagnostic. Scale to a platform.</h2>
+        <p>Size the opportunity first. Commit to the full assessment once you have seen what is there.</p>
+      </div>
+      <div class="cx-vers">
+        <div class="cx-ver rv">
+          <h3>CertOptiX <span class="cx-tier light">Light</span></h3>
+          <p>A guided diagnostic for a single site that wants to size the opportunity before committing to anything.</p>
+          <ul class="caps">{lightFeatures.map((f) => (<li>{f}</li>))}</ul>
+        </div>
+        <div class="cx-ver pro rv">
+          <h3>CertOptiX <span class="cx-tier">Pro</span></h3>
+          <p>The defensible assessment. Evidence-backed, deterministically scored, and built to survive a management review and an external audit.</p>
+          <ul class="caps">{proFeatures.map((f) => (<li>{f}</li>))}</ul>
+        </div>
+      </div>
+
+      <div class="price-grid" style="margin-top:2rem">
+        {engagements.map((e) => (
+          <div class={e.featured ? "pcard feat rv" : "pcard rv"}>
+            {e.featured && <div class="ptag">Most popular</div>}
+            <div class="pname">{e.name}</div>
+            <div class="pprice" style="font-size:1.3rem">{e.dur}</div>
+            <div class="pdesc"><b>{e.who}</b><br />{e.scope}</div>
+            <a class={e.featured ? "btn btn-p" : "btn btn-o"} href="/contact">Request a proposal</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VISTAR TIE-IN -->
+  <section class="why">
+    <div class="wrap">
+      <div class="inline-cta rv">
+        <div>
+          <div class="ict">CertOptiX is a module inside VISTAR</div>
+          <p>CertOptiX runs on the VISTAR platform: the same secure ingestion, retrieval, reasoning, orchestration, policy and reporting engine used across the SilTest semiconductor AI modules. On your own infrastructure, on-prem or private cloud.</p>
+        </div>
+        <a class="btn btn-p" href="/vistar">See VISTAR</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="rv">Bring us one procedure and one audit checklist</h2>
+      <p class="rv">That is enough for us to show you what CertOptiX finds. No commitment, and nothing leaves your control.</p>
+      <div class="cta-row rv"><a class="btn btn-w" href="/contact">Request a scoped proposal</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/vistar">See VISTAR</a></div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script is:inline>
+    (function () {
+      document.querySelectorAll(".cx-tab").forEach((t) => {
+        t.addEventListener("click", () => {
+          document.querySelectorAll(".cx-tab").forEach((x) => x.classList.remove("active"));
+          document.querySelectorAll(".cx-panel").forEach((x) => x.classList.remove("active"));
+          t.classList.add("active");
+          const target = document.getElementById(t.dataset.tab);
+          if (target) target.classList.add("active");
+        });
+      });
+
+      const rows = document.querySelectorAll("[data-row]");
+      const rateEl = document.getElementById("cxrate");
+      const pctEl = document.getElementById("cxpct");
+      const pctLabel = document.getElementById("cxpctLabel");
+      const tHours = document.getElementById("cxHours");
+      const tEur = document.getElementById("cxEur");
+      const tSave = document.getElementById("cxSave");
+      if (!rows.length || !rateEl) return;
+      const fmt = (n) => n.toLocaleString("de-DE", { maximumFractionDigits: 0 });
+
+      function recalc() {
+        let hours = 0;
+        rows.forEach((r) => {
+          const occ = Number(r.querySelector("[data-occ]").value) || 0;
+          const hrs = Number(r.querySelector("[data-hrs]").value) || 0;
+          const h = occ * hrs;
+          hours += h;
+          r.querySelector("[data-out]").textContent = h ? fmt(h) : "0";
+        });
+        const rate = Number(rateEl.value) || 0;
+        const pct = Number(pctEl.value) || 0;
+        pctLabel.textContent = pct;
+        tHours.textContent = fmt(hours);
+        tEur.textContent = "EUR " + fmt(hours * rate);
+        tSave.innerHTML = "EUR " + fmt((hours * rate * pct) / 100) + "<em>per year, every year</em>";
+      }
+      document.querySelectorAll(".cx-calc input").forEach((i) => i.addEventListener("input", recalc));
+      recalc();
+    })();
+  </script>
+</Base>

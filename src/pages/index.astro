@@ -2,10 +2,11 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Lifecycle from "../components/Lifecycle.astro";
 ---
 <Base
   title="SilTest Semiconductors  AI tools for chip testing and production"
-  description="SilTest builds and licenses AI tools that make semiconductor chip testing and production faster and less manual. VISTAR AI platform, YieldOptiX, DefectOptiX, and STDF Quick Viewer."
+  description="SilTest builds and licenses AI tools that make semiconductor chip testing and production faster. VISTAR, the AI platform, YieldOptiX analytics for JMP, and the free STDF Quick Viewer."
 >
   <Header />
 
@@ -43,6 +44,7 @@ import Footer from "../components/Footer.astro";
         <div class="card"><img src="/logos/qstp.jpg" alt="Qatar Science and Technology Park" /><span class="cap">Incubated at QSTP</span></div>
         <div class="card"><img src="/logos/excitelab.png" alt="ExciteLab" /><span class="cap">High-Tech Accelerator Alumni</span></div>
       </div>
+      <div class="proof"><b>4 of the top 5</b> European automotive IDMs work with us</div>
       <div class="plats">
         <span class="lbl">Works with</span>
         <span class="chip">Advantest</span>
@@ -67,7 +69,8 @@ import Footer from "../components/Footer.astro";
       <div class="rv modules">
         <div class="mod"><span class="mi">01</span><div><b>Test Program Generator</b><p>Generate test programs for Advantest and Teradyne from your inputs.</p></div></div>
         <div class="mod"><span class="mi">02</span><div><b>AutoMigreX</b><p>Convert programs across platforms, SmarTest 7 to 8, ETS364 to ETS800, and cross-platform.</p></div></div>
-        <div class="mod"><span class="mi">03</span><div><b>SighFiX</b><p>Silicon and board debug assistant, powered by the VISTAR engine.</p></div></div>
+        <div class="mod"><span class="mi">03</span><div><b>SightFiX</b><p>Silicon and board debug assistant, powered by the VISTAR engine.</p></div></div>
+        <div class="mod"><span class="mi">04</span><div><b>CertOptiX</b><p>Maps your compliance work to the requirements behind it and cuts the duplicated effort.</p></div></div>
         <div class="mod-more">More modules are on the way.</div>
       </div>
     </div>
@@ -84,15 +87,9 @@ import Footer from "../components/Footer.astro";
       <div class="tools-grid">
         <div class="tool rv">
           <span class="tname">YieldOptiX</span>
-          <div class="tout">The world's most powerful JMP plugin</div>
-          <div class="tdesc">Advanced ML analytics for test data, from bring-up to high volume. Run it in JMP, or by natural-language prompt inside VISTAR.</div>
+          <div class="tout">Machine learning analytics for test data, inside JMP</div>
+          <div class="tdesc">The STDF loader JMP is missing, with wafer maps, drift analysis and ML root cause on top. From bring-up to high volume, starting at EUR 9 per month.</div>
           <div class="tfoot"><a class="link-arrow" href="/yieldoptix">See YieldOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
-        </div>
-        <div class="tool rv">
-          <span class="tname">DefectOptiX</span>
-          <div class="tout">Know your outgoing ppm, and defend it</div>
-          <div class="tdesc">Turn test and process parameters into a modelled outgoing quality figure your auditors can trust, with a costed path to your target.</div>
-          <div class="tfoot"><a class="link-arrow" href="/defectoptix">See DefectOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
         </div>
         <div class="tool rv">
           <span class="tname">STDF Quick Viewer</span>
@@ -100,7 +97,22 @@ import Footer from "../components/Footer.astro";
           <div class="tdesc">Parametric summary, wafer maps, and yield in seconds. No license, no install. Your data never leaves your computer.</div>
           <div class="tfoot"><a class="link-arrow" href="/stdf-quick-viewer">Try it free <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a><span class="badge">From EUR 0</span></div>
         </div>
+        <div class="tool rv">
+          <span class="tname">More from SilTest</span>
+          <div class="tout">DefectOptiX and CertOptiX</div>
+          <div class="tdesc">Model your outgoing ppm with DefectOptiX, free in your browser. Cut the workload behind your certifications with CertOptiX.</div>
+          <div class="tfoot"><a class="link-arrow" href="/defectoptix">DefectOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a><a class="link-arrow" href="/certoptix">CertOptiX <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- WHERE THE TOOLS FIT -->
+  <section class="vistar lcstrip">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Where they fit</span><h2>A tool for every stage of your flow</h2><p>From the first test program to the yield report at volume.</p></div>
+      <div class="rv"><Lifecycle variant="tools" /></div>
+      <p class="lc-note rv">Our engineers cover the same flow. <a href="/services">See the services</a></p>
     </div>
   </section>
 
@@ -110,7 +122,7 @@ import Footer from "../components/Footer.astro";
       <div class="sec-head rv"><span class="eyebrow">Why teams use them</span><h2>Less manual work, faster answers</h2></div>
       <div class="why-grid">
         <div class="tile rv"><div class="n">/ 01</div><h3>Less manual work</h3><p>Generate and convert test programs instead of writing them by hand.</p></div>
-        <div class="tile rv"><div class="n">/ 02</div><h3>Catch problems earlier</h3><p>Find failing patterns and root causes in the data, not in the field.</p></div>
+        <div class="tile rv"><div class="n">/ 02</div><h3>Catch problems earlier</h3><p>Catch failing patterns in the data before parts reach your customer.</p></div>
         <div class="tile rv"><div class="n">/ 03</div><h3>Faster yield decisions</h3><p>Go from raw STDF to clear answers in minutes.</p></div>
         <div class="tile rv"><div class="n">/ 04</div><h3>Move across platforms</h3><p>Convert programs between Advantest and Teradyne without starting over.</p></div>
       </div>

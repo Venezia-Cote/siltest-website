@@ -1,0 +1,66 @@
+---
+// Product lifecycle strip.
+// variant="services" -> services mapped across the flow (light background)
+// variant="tools"    -> tools mapped across the flow (dark background)
+const { variant = "services" } = Astro.props;
+
+const phases = [
+  { k: "Design", s: "RTL to tapeout" },
+  { k: "Bring-up and NPI", s: "first silicon" },
+  { k: "Qualification", s: "release to production" },
+  { k: "Volume production", s: "ramp and sustain" },
+];
+
+const services = [
+  ["Design for Test", "/services#design-for-test"],
+  ["Hardware Design", "/services#hardware-design"],
+  ["Test Engineering", "/services#test-engineering"],
+  ["Packaging and Qualification", "/services#packaging-qualification"],
+  ["Yield Management", "/services#yield-management"],
+];
+
+// column index -> which service chips sit under it
+const svcMap = [[0], [1, 2], [3], [4]];
+
+const tools = [
+  ["Test Program Generator", "/vistar"],
+  ["VISTAR platform", "/vistar"],
+  ["SightFiX debug", "/vistar"],
+  ["DefectOptiX", "/defectoptix"],
+  ["YieldOptiX", "/yieldoptix"],
+  ["STDF Quick Viewer", "/stdf-quick-viewer"],
+  ["CertOptiX", "/certoptix"],
+];
+const toolMap = [[0], [1, 2], [3], [4, 5, 6]];
+
+const items = variant === "tools" ? tools : services;
+const map = variant === "tools" ? toolMap : svcMap;
+---
+
+<div class={`lifecycle lc-${variant}`}>
+  <div class="lc-rail">
+    {phases.map((p, i) => (
+      <div class="lc-col">
+        <div class="lc-phase">
+          <span class="lc-k">{p.k}</span>
+          <span class="lc-s">{p.s}</span>
+        </div>
+        {i < phases.length - 1 && (
+          <svg class="lc-arrow" viewBox="0 0 24 12" aria-hidden="true">
+            <path d="M0 6h18M14 1.5L19.5 6 14 10.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          </svg>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <div class="lc-body">
+    {map.map((idxs) => (
+      <div class="lc-cell">
+        {idxs.map((n) => (
+          <a class="lc-chip" href={items[n][1]}>{items[n][0]}</a>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

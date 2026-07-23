@@ -8,6 +8,7 @@ export function getStaticPaths() {
   return courses.map((c) => ({ params: { slug: c.slug }, props: { course: c } }));
 }
 const { course } = Astro.props;
+const enr = course.enrolment;
 
 const schema = {
   "@context": "https://schema.org",
@@ -15,6 +16,15 @@ const schema = {
   name: course.title,
   description: course.overview,
   provider: { "@type": "Organization", name: "SilTest Academy", url: "https://siltest.com/academy" },
+  ...(enr?.open && {
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "online",
+      startDate: "2026-08-03",
+      endDate: "2026-08-04",
+      offers: { "@type": "Offer", price: enr.price, priceCurrency: enr.currency, availability: "https://schema.org/InStock" },
+    },
+  }),
 };
 ---
 <Base title={`${course.title}  SilTest Academy`} description={course.overview}>
@@ -26,12 +36,24 @@ const schema = {
     <div class="wrap">
       <div class="rv in" style="max-width:840px">
         <a class="backlink" href="/academy">&larr; SilTest Academy</a>
-        <span class="eyebrow">Course {course.num}{course.upcoming ? "  ·  dates soon" : ""}</span>
+        {enr?.open
+          ? <span class="enrol-flag"><i></i> Enrolment open  ·  {enr.dateShort}</span>
+          : <span class="eyebrow">Course {course.num}{course.upcoming ? "  ·  dates soon" : ""}</span>}
         <h1>{course.title}</h1>
         <p class="subhead">{course.tagline}</p>
         <p class="lead">{course.overview}</p>
+        {enr?.open && (
+          <div class="enrol-strip">
+            <div><span>Dates</span><b>{enr.dateLabel}</b></div>
+            <div><span>Each day</span><b>{enr.time}</b></div>
+            <div><span>Format</span><b>{enr.delivery}</b></div>
+            <div><span>Seat price</span><b>{enr.currency} {enr.price}</b></div>
+          </div>
+        )}
         <div class="hero-cta">
-          <a class="btn btn-p" href="/contact">Register for dates and pricing</a>
+          {enr?.open
+            ? <a class="btn btn-p" href="#enrol">Book your seat</a>
+            : <a class="btn btn-p" href="/contact">Register for dates and pricing</a>}
           <a class="btn btn-o" href="/academy">All courses</a>
         </div>
       </div>
@@ -104,6 +126,41 @@ const schema = {
     </div>
   </section>
 
+  {enr?.open && (
+    <section id="enrol" class="why">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="eyebrow">Enrolment</span>
+          <h2>Book your seat</h2>
+          <p>The next session runs {enr.dateLabel}, {enr.time} on both days, {enr.delivery.toLowerCase()}. Seats are limited so the group stays small enough for discussion.</p>
+        </div>
+
+        <div class="enrol-grid">
+          <div class="enrol-card feat rv">
+            <div class="ec-tag">Individual seat</div>
+            <div class="ec-price">{enr.currency} {enr.price}<small>{enr.priceNote}</small></div>
+            <ul class="ec-list">{enr.includes.map((i) => <li>{i}</li>)}</ul>
+            <a class="btn btn-p ec-btn" href={enr.checkout}>Book and pay your seat</a>
+            <div class="ec-foot">Prices exclude VAT. Secure checkout by Stripe, which collects your name, company and contact details. Joining instructions follow by email once payment clears.</div>
+          </div>
+
+          <div class="enrol-card rv">
+            <div class="ec-tag">Groups and corporate</div>
+            <div class="ec-price alt">Let us scope it<small>tailored to your team</small></div>
+            <ul class="ec-list">
+              <li>Reduced per-seat pricing for several colleagues</li>
+              <li>A private session for your team, on your own workflows</li>
+              <li>Delivered online, or on-site at your company</li>
+              <li>Dates arranged around your project schedule</li>
+            </ul>
+            <a class="btn btn-o ec-btn" href="/contact">Ask for group pricing</a>
+            <div class="ec-foot">Or write to <a href="mailto:info@siltest.com">info@siltest.com</a> and we will come back with a quote.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- FAQ -->
   <section class="why">
     <div class="wrap">
@@ -119,9 +176,16 @@ const schema = {
   <!-- CTA -->
   <section class="cta">
     <div class="wrap">
-      <h2 class="rv">Join this course</h2>
-      <p class="rv">Register your interest and we will send you the next dates, the price, and everything you need.</p>
-      <div class="cta-row rv"><a class="btn btn-w" href="/contact">Register for details</a><a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/academy">Back to Academy</a></div>
+      <h2 class="rv">{enr?.open ? "Seats are open for the next session" : "Join this course"}</h2>
+      <p class="rv">{enr?.open
+        ? `The next session runs ${enr.dateLabel}. Book a seat, or ask us about pricing for your team.`
+        : "Register your interest and we will send you the next dates, the price, and everything you need."}</p>
+      <div class="cta-row rv">
+        {enr?.open
+          ? <a class="btn btn-w" href={enr.checkout}>Book your seat</a>
+          : <a class="btn btn-w" href="/contact">Register for details</a>}
+        <a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/academy">Back to Academy</a>
+      </div>
     </div>
   </section>
 

@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Lifecycle from "../components/Lifecycle.astro";
 
 const testers = [
   { src: "/media/testers/v93000.jpg", label: "Advantest V93000" },
@@ -48,7 +49,16 @@ const testers = [
         <div class="capcard rv"><div class="cardic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 2v5M15 2v5M7 7h10v3a5 5 0 01-10 0V7zM12 15v5"/></svg></div><div class="ci">Platform-independent</div><h3>Cross-ATE experience</h3><p>Hands-on across the major tester families, at wafer, final, and system-level test.</p></div>
         <div class="capcard rv"><div class="cardic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.3L12 15l-1.8-4.7L5.5 9l4.7-1.3L12 3z"/></svg></div><div class="ci">Tool-accelerated</div><h3>Our own AI tools</h3><p>The same tools we license, VISTAR and YieldOptiX, speed up the work we do for you.</p></div>
       </div>
-      <p class="svc-lead rv" style="margin-top:1.6rem">Our engineers bring decades of hands-on experience from Tier-1 semiconductor companies, and we are trusted by leading fabless partners across the industry.</p>
+      <p class="svc-lead rv" style="margin-top:1.6rem">Our engineers bring decades of hands-on experience from Tier-1 semiconductor companies, and we are trusted by leading automotive and industrial manufacturers across Europe.</p>
+    </div>
+  </section>
+
+  <!-- LIFECYCLE MAP -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Where we fit</span><h2>One partner across your product flow</h2><p>The five services below map onto the stages your product already moves through.</p></div>
+      <div class="rv"><Lifecycle variant="services" /></div>
+      <p class="lc-note rv">Take one service, or hand us the whole flow.</p>
     </div>
   </section>
 
@@ -184,7 +194,7 @@ const testers = [
             <li>Qualification and reliability handled end to end</li>
             <li>A production-ready, cost-optimized test solution</li>
           </ul>
-          <div class="tool-inline">It does not stop at release. We stay on for <b>ongoing yield management</b> and production support.</div>
+          <div class="tool-inline">The work continues after release: we stay on for <b>ongoing yield management</b> and production support.</div>
         </div>
       </div>
     </div>
