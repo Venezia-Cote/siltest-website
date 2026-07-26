@@ -12,9 +12,9 @@ const product = {
   "@type": "Product",
   name: "STDF Quick Viewer",
   brand: { "@type": "Brand", name: "SilTest Semiconductors" },
-  category: "Browser-based STDF viewer for semiconductor test",
+  category: "STDF viewer for semiconductor test",
   description:
-    "STDF Quick Viewer opens STDF files in your browser. Parametric summary, wafer maps, and yield in seconds, with no install and no account for the free tier. Files are parsed in the browser, so data never leaves the computer.",
+    "STDF Quick Viewer opens STDF files in seconds. Parametric summary, wafer maps, and yield, with no install and no account for the free tier. Files are processed securely on our servers, never stored, and discarded when your session ends.",
   offers: [
     { "@type": "Offer", name: "Free", price: "0", priceCurrency: "EUR" },
     { "@type": "Offer", name: "Pro, monthly", price: "19", priceCurrency: "EUR" },
@@ -23,8 +23,8 @@ const product = {
 };
 ---
 <Base
-  title="STDF Quick Viewer  open STDF files in your browser, free"
-  description="Open any STDF file in your browser. Parametric summary, wafer maps, and yield in seconds. No install, no account for the free tier, and your data never leaves your computer."
+  title="STDF Quick Viewer  open any STDF file in seconds, free"
+  description="Open any STDF file in seconds. Parametric summary, wafer maps, and yield. No install, no account for the free tier. Processed securely on our servers, never stored, and discarded when your session ends."
 >
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(product)} slot="head" />
@@ -33,9 +33,9 @@ const product = {
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="rv in">
-        <span class="eyebrow">STDF, in your browser</span>
-        <h1>Open any STDF file in your browser. <span>Free.</span></h1>
-        <p class="lead">Parametric summary, wafer maps, and yield in seconds. No install, and no account for the free tier. Your file is parsed in the browser, so your data never leaves your computer.</p>
+        <span class="eyebrow">STDF, in seconds</span>
+        <h1>Open any STDF file in seconds. <span>Free.</span></h1>
+        <p class="lead">Parametric summary, wafer maps, and yield in seconds. No install, and no account for the free tier. Your file is processed securely on our servers, never stored, and discarded the moment your session ends.</p>
         <div class="hero-cta">
           <a class="btn btn-p" href={viewer}>Open the viewer</a>
           <a class="btn btn-o" href="#pricing">See pricing</a>
@@ -48,7 +48,7 @@ const product = {
       </div>
       <div class="rv in">
         <div class="decode">
-          <div class="flow-bar"><span>stdf // parsed in browser</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="flow-bar"><span>stdf // decoded in seconds</span><span class="dots"><i></i><i></i><i></i></span></div>
           <div class="dec-row">
             <div class="hexcol">00 0A <b>00 10</b> 4C 4F 54 31 32 33 08 57 61 66 65 72 2D 30 31 <b>1F 04</b> 9C 3B 41 54 45 5F 56 39 33 4B 0A 50 41 53 53 2E 2E 2E</div>
             <div class="arrowmid">&rarr;</div>
@@ -60,7 +60,7 @@ const product = {
               <div class="prow"><span>Tester</span><span>V93K</span></div>
             </div>
           </div>
-          <div class="flow-foot"><span>opened in your browser</span><span class="ok">nothing uploaded</span></div>
+          <div class="flow-foot"><span>parsed in seconds</span><span class="ok">never stored</span></div>
         </div>
       </div>
     </div>
@@ -85,8 +85,8 @@ const product = {
   <section class="why">
     <div class="wrap">
       <div class="band rv">
-        <div class="bt">Your file is parsed in your browser. It never leaves your computer, and there is nothing to upload.</div>
-        <div class="btags"><span class="bchip">in-browser</span><span class="bchip">no upload</span><span class="bchip">no account needed</span></div>
+        <div class="bt">Your file is processed securely on our servers. Nothing is stored, and everything is discarded the moment your session ends.</div>
+        <div class="btags"><span class="bchip">no retention</span><span class="bchip">no logging</span><span class="bchip">GDPR-native</span><span class="bchip">no account needed</span></div>
       </div>
     </div>
   </section>

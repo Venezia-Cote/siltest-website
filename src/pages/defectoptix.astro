@@ -3,8 +3,8 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const signup = "https://defectoptix.siltest.com/";
-const signin = "https://defectoptix.siltest.com/";
+const signup = "https://defectoptix.siltest.com/sign-up";
+const signin = "https://defectoptix.siltest.com/sign-in";
 
 const product = {
   "@context": "https://schema.org",
@@ -45,13 +45,29 @@ const product = {
     </div>
   </section>
 
-  <!-- DASHBOARD SHOT -->
+  <!-- ANALYSIS TEASER -->
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="figframe figwide rv">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <img src="/media/defectoptix-dashboard.jpg" alt="DefectOptiX dashboard, showing the estimated outgoing quality, confidence band, and improvement levers" loading="lazy" />
-        <div class="figcap">The DefectOptiX dashboard: estimated outgoing quality, the confidence band, and the ranked levers.</div>
+      <div class="sec-head rv" style="margin-bottom:1.6rem">
+        <span class="eyebrow">Inside the analysis</span>
+        <h2 style="font-size:clamp(1.4rem,2.4vw,1.8rem)">A few of the views you get</h2>
+      </div>
+      <div class="gallery">
+        <div class="figframe rv">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="chartbox"><img src="/media/defectoptix/defectoptix-disposition.png" alt="Defect disposition by stage, a donut chart showing the share of incoming defective parts caught at wafer sort, screening, final test, and escapes to field" loading="lazy" /></div>
+          <div class="figcap">Where defects are actually caught, by stage.</div>
+        </div>
+        <div class="figframe rv">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="chartbox"><img src="/media/defectoptix/defectoptix-pareto.png" alt="Cost versus outgoing quality Pareto frontier, plotting test cost index against outgoing ppm for different parameter sets" loading="lazy" /></div>
+          <div class="figcap">Cost against outgoing quality, one lever at a time.</div>
+        </div>
+        <div class="figframe rv">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="chartbox"><img src="/media/defectoptix/defectoptix-montecarlo.png" alt="Monte Carlo simulation histogram of 10,000 draws, showing the P10, P50 and P90 outgoing ppm" loading="lazy" /></div>
+          <div class="figcap">The full distribution behind the number, not just a point estimate.</div>
+        </div>
       </div>
     </div>
   </section>

@@ -51,6 +51,57 @@ const company = [
     <div class="nav-right">
       <a class="btn btn-p" href="/contact">Book a demo</a>
     </div>
-    <span class="burger">Menu</span>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">Menu</button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobnav" id="mobileNav" hidden>
+    <div class="mobnav-group">
+      <div class="mobnav-label">Products</div>
+      {products.map((p) => (<a href={p.href}>{p.name}</a>))}
+    </div>
+    <div class="mobnav-group">
+      <div class="mobnav-label">Services</div>
+      {services.map((s) => (<a href={s.href}>{s.name}</a>))}
+    </div>
+    <div class="mobnav-group">
+      <div class="mobnav-label">Academy</div>
+      <a href="/academy">All courses</a>
+    </div>
+    <div class="mobnav-group">
+      <div class="mobnav-label">Company</div>
+      {company.map((c) => (<a href={c.href}>{c.name}</a>))}
+    </div>
+    <a class="btn btn-p mobnav-cta" href="/contact">Book a demo</a>
   </div>
 </header>
+
+<script is:inline>
+  (function () {
+    var b = document.getElementById("burger");
+    var m = document.getElementById("mobileNav");
+    if (!b || !m) return;
+    var header = b.closest("header");
+    function syncOffset() {
+      if (header) document.documentElement.style.setProperty("--nav-h", header.offsetHeight + "px");
+    }
+    function setOpen(open) {
+      syncOffset();
+      m.hidden = !open;
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.textContent = open ? "Close" : "Menu";
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+    window.addEventListener("resize", function () { if (!m.hidden) syncOffset(); });
+    b.addEventListener("click", function () {
+      setOpen(m.hidden);
+    });
+    // close when a link is tapped, or on escape
+    m.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !m.hidden) setOpen(false);
+    });
+  })();
+</script>

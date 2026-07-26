@@ -15,7 +15,8 @@ import Lifecycle from "../components/Lifecycle.astro";
     <div class="wrap hero-grid">
       <div class="rv in">
         <span class="eyebrow">AI tools for chip test and production</span>
-        <h1>AI tools that make chip testing <span>faster</span>.</h1>
+        <h1>AI tools that make <span class="rotate" aria-live="polite"><span class="rotate-word" id="rotword">chip testing</span></span> <span>faster</span>.</h1>
+        <noscript><style>.rotate-caret{display:none}</style></noscript>
         <p class="lead">SilTest builds and licenses AI tools that cut the manual work in semiconductor test and production. VISTAR, our AI platform, plus focused tools for analytics, quality, and data.</p>
         <div class="hero-cta">
           <a class="btn btn-p" href="/contact">Book a demo</a>
@@ -93,8 +94,8 @@ import Lifecycle from "../components/Lifecycle.astro";
         </div>
         <div class="tool rv">
           <span class="tname">STDF Quick Viewer</span>
-          <div class="tout">Open any STDF file in your browser</div>
-          <div class="tdesc">Parametric summary, wafer maps, and yield in seconds. No license, no install. Your data never leaves your computer.</div>
+          <div class="tout">Open any STDF file in seconds</div>
+          <div class="tdesc">Parametric summary, wafer maps, and yield in seconds. No license, no install. Processed securely, never stored.</div>
           <div class="tfoot"><a class="link-arrow" href="/stdf-quick-viewer">Try it free <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a><span class="badge">From EUR 0</span></div>
         </div>
         <div class="tool rv">
@@ -177,4 +178,34 @@ import Lifecycle from "../components/Lifecycle.astro";
   </section>
 
   <Footer />
+
+  <script is:inline>
+    (function () {
+      var el = document.getElementById("rotword");
+      if (!el) return;
+      // respect users who prefer reduced motion
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var words = ["chip testing", "chip production", "yield learning", "silicon debug", "test migration"];
+      // sync with the visible static text (the no-JS fallback already shows
+      // the full first word), otherwise the delete countdown overshoots
+      // past zero and the headline empties out and never recovers.
+      var i = 0, ch = words[0].length, deleting = false;
+      function tick() {
+        var full = words[i];
+        if (!deleting) {
+          ch++;
+          el.textContent = full.slice(0, ch);
+          if (ch === full.length) { deleting = true; return setTimeout(tick, 1600); }
+          return setTimeout(tick, 90);
+        } else {
+          ch--;
+          el.textContent = full.slice(0, ch);
+          if (ch === 0) { deleting = false; i = (i + 1) % words.length; return setTimeout(tick, 260); }
+          return setTimeout(tick, 45);
+        }
+      }
+      // start after the first word has been shown briefly
+      setTimeout(function () { deleting = true; tick(); }, 1600);
+    })();
+  </script>
 </Base>
