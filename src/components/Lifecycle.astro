@@ -1,7 +1,8 @@
 ---
 // Product lifecycle strip.
 // variant="services" -> services mapped across the flow (light background)
-// variant="tools"    -> tools mapped across the flow (dark background)
+// variant="tools"    -> tools mapped across the flow (dark background),
+//                       with VISTAR shown as the platform underneath everything
 const { variant = "services" } = Astro.props;
 
 const phases = [
@@ -22,16 +23,17 @@ const services = [
 // column index -> which service chips sit under it
 const svcMap = [[0], [1, 2], [3], [4]];
 
+// VISTAR is pulled out as the platform band, so it no longer needs its
+// own slot in this list; everything else still maps to a phase column.
 const tools = [
   ["Test Program Generator", "/vistar"],
-  ["VISTAR platform", "/vistar"],
   ["SightFiX debug", "/vistar"],
   ["DefectOptiX", "/defectoptix"],
   ["YieldOptiX", "/yieldoptix"],
   ["STDF Quick Viewer", "/stdf-quick-viewer"],
   ["CertOptiX", "/certoptix"],
 ];
-const toolMap = [[0], [1, 2], [3], [4, 5, 6]];
+const toolMap = [[0], [1], [2], [3, 4, 5]];
 
 const items = variant === "tools" ? tools : services;
 const map = variant === "tools" ? toolMap : svcMap;
@@ -53,6 +55,13 @@ const map = variant === "tools" ? toolMap : svcMap;
       </div>
     ))}
   </div>
+
+  {variant === "tools" && (
+    <a class="lc-platform" href="/vistar">
+      <span class="lc-platform-name">VISTAR</span>
+      <span class="lc-platform-sub">the platform underneath every tool here, on your infrastructure</span>
+    </a>
+  )}
 
   <div class="lc-body">
     {map.map((idxs) => (

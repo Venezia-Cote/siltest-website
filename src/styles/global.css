@@ -856,3 +856,19 @@ a.course:hover{box-shadow:var(--shh);transform:translateY(-3px);border-color:var
    shown at a consistent card height so the 3-up gallery reads as a set */
 .gallery .figframe .chartbox{background:#fff;display:flex;align-items:center;justify-content:center;height:190px;padding:14px}
 .gallery .figframe .chartbox img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+
+/* VISTAR platform band, sits between the phase rail and the tool chips
+   on the "tools" variant of the lifecycle strip, to show it underlies
+   every stage rather than belonging to just one */
+.lc-platform{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
+  background:linear-gradient(90deg,rgba(0,140,255,.22),rgba(32,189,255,.12));
+  border:1px solid rgba(32,189,255,.4);border-radius:12px;
+  padding:.85rem 1.2rem;margin:.6rem 0;text-decoration:none;transition:.16s ease}
+.lc-platform:hover{border-color:var(--lightblue);background:linear-gradient(90deg,rgba(0,140,255,.3),rgba(32,189,255,.18))}
+.lc-platform-name{font-family:var(--mono);font-size:14px;font-weight:700;color:#fff;letter-spacing:.03em;flex:none}
+.lc-platform-sub{font-size:13px;color:rgba(255,255,255,.72)}
+
+@media(max-width:860px){
+  .lc-platform{padding:.7rem 1rem}
+  .lc-platform-sub{font-size:12px}
+}
