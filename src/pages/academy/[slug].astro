@@ -20,8 +20,8 @@ const schema = {
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
-      startDate: "2026-08-03",
-      endDate: "2026-08-04",
+      startDate: enr.startDateISO,
+      endDate: enr.endDateISO,
       offers: { "@type": "Offer", price: enr.price, priceCurrency: enr.currency, availability: "https://schema.org/InStock" },
     },
   }),
