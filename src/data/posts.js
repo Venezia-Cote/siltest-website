@@ -68,7 +68,7 @@ export const posts = [
 
 <h2>Building local capability</h2>
 <p>With the support of <a href="https://www.invest.qa/en" target="_blank" rel="noopener">Invest Qatar</a>, the <a href="https://www.qfc.qa/en" target="_blank" rel="noopener">Qatar Financial Centre</a>, and the German Industry and Commerce Office Qatar, SilTest is making a long-term investment in talent, technology, and knowledge transfer. The company worked closely with these institutions to navigate market entry, establish its local presence, and connect with the broader business and innovation ecosystem.</p>
-<p>A key pillar of the regional strategy is <a href="/academy">SilTest Academy</a>, the company's training and capability-building programme, designed to help develop a workforce ready for the semiconductor industry.</p>
+<p>A key pillar of the regional strategy is <a href="/academy/">SilTest Academy</a>, the company's training and capability-building programme, designed to help develop a workforce ready for the semiconductor industry.</p>
 
 <blockquote>Beyond serving customers, our goal is to contribute to ecosystem development. Building local capabilities, engineering talent, operational know-how, and applied expertise, will be essential for attracting further semiconductor investment into the region.
 <cite>Sameer Saran</cite></blockquote>
@@ -99,16 +99,16 @@ export const posts = [
 <p><i>Your data is too complex and too sensitive for generic tools.</i></p>
 
 <h2>VISTAR: an AI engine built for silicon</h2>
-<p>Generic AI fails without domain context. It cannot tell a test bin from a yield bin, and it does not grasp ATE nuances. <a href="/vistar">VISTAR</a> is built for silicon: a secure, modular AI engine designed for the semiconductor lifecycle.</p>
+<p>Generic AI fails without domain context. It cannot tell a test bin from a yield bin, and it does not grasp ATE nuances. <a href="/vistar/">VISTAR</a> is built for silicon: a secure, modular AI engine designed for the semiconductor lifecycle.</p>
 <ul>
   <li><b>Secure.</b> Runs fully on-premises, so design data never leaves your network and IP leakage risk is removed.</li>
-  <li><b>Domain-specific.</b> Modules such as <a href="/vistar">SightFiX</a> for hardware failure pattern detection speak the language of silicon.</li>
+  <li><b>Domain-specific.</b> Modules such as <a href="/vistar/">SightFiX</a> for hardware failure pattern detection speak the language of silicon.</li>
   <li><b>Practical.</b> Users report meaningful productivity gains in documentation, test debugging, and analysis.</li>
 </ul>
 
 <h2>The end of manual test limits</h2>
 <p>If you are still setting test limits by hand, you are leaving functional die on the table.</p>
-<p>Our update to <a href="/yieldoptix">YieldOptiX</a> introduces adaptive limits rounding, a machine learning feature that analyzes real distribution data to optimize test limits, moving beyond static, conservative boundaries.</p>
+<p>Our update to <a href="/yieldoptix/">YieldOptiX</a> introduces adaptive limits rounding, a machine learning feature that analyzes real distribution data to optimize test limits, moving beyond static, conservative boundaries.</p>
 <table>
   <thead><tr><th>Metric</th><th>Traditional analysis</th><th>YieldOptiX</th></tr></thead>
   <tbody>
@@ -121,7 +121,7 @@ export const posts = [
 
 <h2>Where to start</h2>
 <p>The future of semiconductor engineering is not about generating more data. It is about turning the data you already have into decisions you can defend.</p>
-<p><a href="/vistar">Explore VISTAR</a> &nbsp;·&nbsp; <a href="/yieldoptix">See YieldOptiX</a> &nbsp;·&nbsp; <a href="/academy">Join SilTest Academy</a></p>
+<p><a href="/vistar/">Explore VISTAR</a> &nbsp;·&nbsp; <a href="/yieldoptix/">See YieldOptiX</a> &nbsp;·&nbsp; <a href="/academy/">Join SilTest Academy</a></p>
 `,
   },
   {
@@ -136,7 +136,7 @@ export const posts = [
     excerpt:
       "Most companies keep analytics tools and training separate. Pairing the two is what actually changes how quickly a team can act on its test data.",
     body: `
-<p>In the fast-paced semiconductor world, success depends on optimizing every step of the process. SilTest offers a combination that is unusual in this industry: the analytics of <a href="/yieldoptix">YieldOptiX</a> alongside the hands-on teaching of <a href="/academy">SilTest Academy</a>. Together they give a team the insights, the strategy, and the skills to improve yield.</p>
+<p>In the fast-paced semiconductor world, success depends on optimizing every step of the process. SilTest offers a combination that is unusual in this industry: the analytics of <a href="/yieldoptix/">YieldOptiX</a> alongside the hands-on teaching of <a href="/academy/">SilTest Academy</a>. Together they give a team the insights, the strategy, and the skills to improve yield.</p>
 
 <h2>YieldOptiX: faster decisions from your test data</h2>
 <p>Semiconductor manufacturing produces enormous volumes of test data, with the insight often buried deep inside it. YieldOptiX turns that complexity into something an engineer can act on, without heavy coding or manual rework.</p>
@@ -170,7 +170,7 @@ export const posts = [
 </table>
 
 <h2>Next steps</h2>
-<p><a href="/contact">Book a YieldOptiX demo</a> to see the analytics on your own data, or <a href="/academy">explore the training programmes</a>, available in Kleve or on-site at your company.</p>
+<p><a href="/contact/">Book a YieldOptiX demo</a> to see the analytics on your own data, or <a href="/academy/">explore the training programmes</a>, available in Kleve or on-site at your company.</p>
 `,
   },
   {

@@ -19,14 +19,14 @@ const article = {
   description: post.excerpt,
 };
 ---
-<Base title={`${post.title}  SilTest Semiconductors`} description={post.excerpt}>
+<Base title={`${post.title} | SilTest Semiconductors`} description={post.excerpt} breadcrumbLastLabel={post.title}>
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(article)} slot="head" />
 
   <article class="post">
     <section class="hero">
       <div class="wrap">
-        <a class="backlink rv in" href="/news">&#8592; All news</a>
+        <a class="backlink rv in" href="/news/">&#8592; All news</a>
         <div class="rv in" style="max-width:800px">
           <div class="pmeta"><span class="pcat">{post.category}</span><span>{post.dateLabel}</span><span>{post.readingTime}</span></div>
           <h1>{post.title}</h1>

@@ -26,12 +26,12 @@ const svcMap = [[0], [1, 2], [3], [4]];
 // VISTAR is pulled out as the platform band, so it no longer needs its
 // own slot in this list; everything else still maps to a phase column.
 const tools = [
-  ["Test Program Generator", "/vistar"],
-  ["SightFiX debug", "/vistar"],
-  ["DefectOptiX", "/defectoptix"],
-  ["YieldOptiX", "/yieldoptix"],
-  ["STDF Quick Viewer", "/stdf-quick-viewer"],
-  ["CertOptiX", "/certoptix"],
+  ["Test Program Generator", "/vistar/"],
+  ["SightFiX debug", "/vistar/"],
+  ["DefectOptiX", "/defectoptix/"],
+  ["YieldOptiX", "/yieldoptix/"],
+  ["STDF Quick Viewer", "/stdf-quick-viewer/"],
+  ["CertOptiX", "/certoptix/"],
 ];
 const toolMap = [[0], [1], [2], [3, 4, 5]];
 
@@ -57,7 +57,7 @@ const map = variant === "tools" ? toolMap : svcMap;
   </div>
 
   {variant === "tools" && (
-    <a class="lc-platform" href="/vistar">
+    <a class="lc-platform" href="/vistar/">
       <span class="lc-platform-name">VISTAR</span>
       <span class="lc-platform-sub">the platform underneath every tool here, on your infrastructure</span>
     </a>

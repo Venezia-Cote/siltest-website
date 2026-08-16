@@ -20,14 +20,14 @@ const schema = {
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
-      startDate: "2026-08-03",
-      endDate: "2026-08-04",
+      startDate: enr.startDateISO,
+      endDate: enr.endDateISO,
       offers: { "@type": "Offer", price: enr.price, priceCurrency: enr.currency, availability: "https://schema.org/InStock" },
     },
   }),
 };
 ---
-<Base title={`${course.title}  SilTest Academy`} description={course.overview}>
+<Base title={`${course.title} | SilTest Academy`} description={course.overview} breadcrumbLastLabel={course.title}>
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
 
@@ -35,7 +35,7 @@ const schema = {
   <section class="hero">
     <div class="wrap">
       <div class="rv in" style="max-width:840px">
-        <a class="backlink" href="/academy">&larr; SilTest Academy</a>
+        <a class="backlink" href="/academy/">&larr; SilTest Academy</a>
         {enr?.open
           ? <span class="enrol-flag"><i></i> Enrolment open  ·  {enr.dateShort}</span>
           : <span class="eyebrow">Course {course.num}{course.upcoming ? "  ·  dates soon" : ""}</span>}
@@ -53,8 +53,8 @@ const schema = {
         <div class="hero-cta">
           {enr?.open
             ? <a class="btn btn-p" href="#enrol">Book your seat</a>
-            : <a class="btn btn-p" href="/contact">Register for dates and pricing</a>}
-          <a class="btn btn-o" href="/academy">All courses</a>
+            : <a class="btn btn-p" href="/contact/">Register for dates and pricing</a>}
+          <a class="btn btn-o" href="/academy/">All courses</a>
         </div>
       </div>
     </div>
@@ -153,7 +153,7 @@ const schema = {
               <li>Delivered online, or on-site at your company</li>
               <li>Dates arranged around your project schedule</li>
             </ul>
-            <a class="btn btn-o ec-btn" href="/contact">Ask for group pricing</a>
+            <a class="btn btn-o ec-btn" href="/contact/">Ask for group pricing</a>
             <div class="ec-foot">Or write to <a href="mailto:info@siltest.com">info@siltest.com</a> and we will come back with a quote.</div>
           </div>
         </div>
@@ -183,8 +183,8 @@ const schema = {
       <div class="cta-row rv">
         {enr?.open
           ? <a class="btn btn-w" href={enr.checkout}>Book your seat</a>
-          : <a class="btn btn-w" href="/contact">Register for details</a>}
-        <a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/academy">Back to Academy</a>
+          : <a class="btn btn-w" href="/contact/">Register for details</a>}
+        <a class="btn btn-o" style="color:#fff;border-color:rgba(255,255,255,.3)" href="/academy/">Back to Academy</a>
       </div>
     </div>
   </section>

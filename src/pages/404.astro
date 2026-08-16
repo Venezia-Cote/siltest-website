@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+<Base
+  title="Page Not Found | SilTest Semiconductors"
+  description="This page does not exist or has moved. Find what you need from SilTest's homepage, tools, services, or academy."
+  noindex={true}
+>
+  <Header />
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="rv in" style="max-width:640px">
+        <span class="eyebrow">404</span>
+        <h1 style="margin-top:1rem">We could not find that page.</h1>
+        <p class="lead" style="margin-top:1rem">The page may have moved or the link may be out of date. Here are a few places to start instead.</p>
+        <div class="hero-cta" style="margin-top:1.5rem;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-p" href="/">Homepage</a>
+          <a class="btn btn-o" href="/vistar/">VISTAR</a>
+          <a class="btn btn-o" href="/services/">Services</a>
+          <a class="btn btn-o" href="/contact/">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

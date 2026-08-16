@@ -3,8 +3,23 @@ export interface Props {
   title: string;
   description: string;
   lang?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  breadcrumbLastLabel?: string;
 }
-const { title, description, lang = "en" } = Astro.props;
+const {
+  title,
+  description,
+  lang = "en",
+  noindex = false,
+  ogImage = "/media/og-default.png",
+  breadcrumbLastLabel,
+} = Astro.props;
+const absoluteOgImage = new URL(ogImage, "https://siltest.com").href;
+const canonicalUrl = new URL(Astro.url.pathname, "https://siltest.com").href;
+// German is not live yet. Until real content ships, do not tell search engines
+// or hreflang that /de/ is a valid alternate: it is a placeholder page.
+const germanIsLive = false;
 import "../styles/global.css";
 
 const org = {
@@ -22,6 +37,48 @@ const org = {
     { "@type": "PostalAddress", addressLocality: "Bangalore", addressCountry: "IN" },
   ],
 };
+
+// Breadcrumb schema, built from the URL path. Product and section slugs get
+// their real display name; anything else falls back to a title-cased
+// version of the slug. Skipped on the homepage and on noindex pages, where
+// a breadcrumb trail adds nothing.
+const segmentNames: Record<string, string> = {
+  vistar: "VISTAR",
+  yieldoptix: "YieldOptiX",
+  defectoptix: "DefectOptiX",
+  certoptix: "CertOptiX",
+  "stdf-quick-viewer": "STDF Quick Viewer",
+  about: "About",
+  academy: "Academy",
+  career: "Career",
+  contact: "Contact",
+  imprint: "Imprint",
+  privacy: "Privacy Policy",
+  leadership: "Leadership and Team",
+  partnerships: "Partnerships",
+  services: "Services",
+  news: "News and Insights",
+};
+const titleCase = (slug: string) =>
+  slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+let breadcrumb: { "@context": string; "@type": string; itemListElement: object[] } | null = null;
+if (!noindex && pathSegments.length > 0) {
+  const items = [{ "@type": "ListItem", position: 1, name: "Home", item: "https://siltest.com/" }];
+  let accPath = "";
+  pathSegments.forEach((seg, i) => {
+    accPath += `/${seg}`;
+    const isLast = i === pathSegments.length - 1;
+    const name = isLast && breadcrumbLastLabel ? breadcrumbLastLabel : segmentNames[seg] || titleCase(seg);
+    items.push({
+      "@type": "ListItem",
+      position: i + 2,
+      name,
+      item: `https://siltest.com${accPath}/`,
+    });
+  });
+  breadcrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items };
+}
 ---
 <!doctype html>
 <html lang={lang}>
@@ -30,15 +87,29 @@ const org = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/favicon.png" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, "https://siltest.com").href} />
-    <!-- hreflang: English default at root, German at /de -->
-    <link rel="alternate" hreflang="en" href="https://siltest.com/" />
-    <link rel="alternate" hreflang="de" href="https://siltest.com/de/" />
-    <link rel="alternate" hreflang="x-default" href="https://siltest.com/" />
+    <link rel="canonical" href={canonicalUrl} />
+    <!-- hreflang: only advertise a locale once it has real, live content. -->
+    {germanIsLive ? (
+      <>
+        <link rel="alternate" hreflang="en" href="https://siltest.com/" />
+        <link rel="alternate" hreflang="de" href="https://siltest.com/de/" />
+        <link rel="alternate" hreflang="x-default" href="https://siltest.com/" />
+      </>
+    ) : (
+      <link rel="alternate" hreflang="x-default" href="https://siltest.com/" />
+    )}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:site_name" content="SilTest Semiconductors" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,6 +117,7 @@ const org = {
       rel="stylesheet"
     />
     <script type="application/ld+json" set:html={JSON.stringify(org)} />
+    {breadcrumb && <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />}
     <slot name="head" />
   </head>
   <body>
