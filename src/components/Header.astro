@@ -53,8 +53,9 @@ const company = [
     </div>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" type="button">Menu</button>
   </div>
+  </header>
 
-  <!-- Mobile menu -->
+  <!-- Mobile menu, kept outside <header> so the header backdrop-filter does not trap it -->
   <div class="mobnav" id="mobileNav" hidden>
     <div class="mobnav-group">
       <div class="mobnav-label">Products</div>
@@ -74,7 +75,6 @@ const company = [
     </div>
     <a class="btn btn-p mobnav-cta" href="/contact">Book a demo</a>
   </div>
-</header>
 
 <script is:inline>
   (function () {
