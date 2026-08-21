@@ -110,12 +110,11 @@ if (!noindex && pathSegments.length > 0) {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOgImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts are self-hosted from /fonts (see global.css @font-face).
+         No connection to Google is made. Preload the two weights used
+         above the fold so text paints without a flash. -->
+    <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-sans-600.woff2" as="font" type="font/woff2" crossorigin />
     <script type="application/ld+json" set:html={JSON.stringify(org)} />
     {breadcrumb && <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />}
     <slot name="head" />
