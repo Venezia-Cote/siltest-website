@@ -1,3 +1,14 @@
+/* Self-hosted fonts. Served from /public/fonts, no connection to Google.
+   This keeps visitor IP addresses off Google servers and removes the need
+   for cookie consent for fonts. Latin subset, woff2 only. */
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-sans-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-sans-500.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-sans-600.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/ibm-plex-sans-700.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+
 :root{
   --navy:#010C2B; --blue:#008CFF; --lightblue:#20BDFF; --blue-dark:#0070CC;
   --paper:#FAF8F4; --paper2:#F1EEE6; --white:#ffffff;
@@ -440,6 +451,8 @@ a.course:hover{box-shadow:var(--shh);transform:translateY(-3px);border-color:var
 .cform label{font-size:13px;font-weight:600;color:var(--navy);display:block;margin-bottom:.4rem}
 .cform input,.cform textarea,.cform select{width:100%;font-family:var(--sans);font-size:15px;padding:11px 14px;border:1px solid var(--border);border-radius:var(--rs);background:#fff;color:var(--ink)}
 .cform textarea{min-height:130px;resize:vertical}
+.cform .form-privacy{font-size:13px;color:var(--ink3);line-height:1.5;margin:-.2rem 0 .2rem}
+.cform .form-privacy a{color:var(--blue);text-decoration:underline}
 @media(max-width:600px){.cform{grid-template-columns:1fr}}
 
 /* ---- roles ---- */
