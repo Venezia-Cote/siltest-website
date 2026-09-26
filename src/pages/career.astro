@@ -8,17 +8,135 @@ const roles = [
     sum: "Work on VISTAR, our AI platform. Help build test program generation, LLM and retrieval pipelines, and agentic workflows that solve real test problems.",
     skills: ["Python", "LLMs and RAG", "Automation", "Curiosity"] },
   { title: "Senior Test Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
-    sum: "Own new product introduction on ATE: test program development, bring-up, characterization, and production release, with a sharp eye on yield and test cost.",
-    skills: ["Advantest V93000, SmarTest 8", "Teradyne UltraFLEX", "Test program development", "Characterization"] },
+    sum: "Own new product introduction on ATE, on Advantest V93000 SmarTest 8 and Teradyne UltraFLEX and UltraFLEXplus: test program development, bring-up, characterization, correlation, production release, and yield and test-cost improvement.",
+    skills: ["Advantest V93000, SmarTest 8", "Teradyne UltraFLEX, UltraFLEXplus", "Test program development", "Characterization and correlation"],
+    resp: [
+      "Develop test plans for new IPs and products, based on requirements from market segment, design architecture, DFT and product engineering.",
+      "Develop, debug and maintain ATE test programs on Advantest V93000 SmarTest 8 and Teradyne UltraFLEX and UltraFLEXplus.",
+      "Create and maintain test flows, test methods, pin maps, level and timing setups, pattern integration, limit tables, datalogging and characterization setups.",
+      "Convert, integrate and validate digital patterns and tester files from DFT, simulation or customer-specific formats.",
+      "Execute silicon bring-up, device characterization, shmoo analysis, correlation, guardbanding and release to production.",
+      "Support test hardware development and validation, including probe cards, load boards, sockets, fixtures, interface boards and handling requirements.",
+      "Drive production test-cost reduction, test-time optimization, multisite efficiency, yield improvement and failure Pareto analysis.",
+      "Develop special characterization tests so products meet quality standards, datasheet limits and design specifications.",
+      "Support production ramp, sustained production, customer issue debug, failure analysis and continuous improvement.",
+      "Automate routine engineering tasks, reporting, data analysis and documentation.",
+    ],
+    quals: [
+      "Hands-on experience in ATE test development, product engineering, characterization or production test support.",
+      "Practical experience with Advantest V93000 SmarTest 8: test program structure, setup files, levels, timing, vectors, flows, test methods, debug and characterization tools.",
+      "Practical experience with Teradyne UltraFLEX or UltraFLEXplus: IG-XL-based program development, debug, datalogging, correlation and production release.",
+      "Good understanding of one or more test domains such as digital, mixed-signal, RF, power management, MEMS or high-speed interface testing.",
+      "Knowledge of common IPs such as ADCs, DACs, PLLs, oscillators, PMUs, DC/DC converters, high-speed IOs and communication interfaces.",
+      "Programming in one or more of Java, C, C++, C#, VB or VBA, or Python.",
+      "Experience with STDF, datalog analysis, characterization reports, test limits, yield analysis and production debug is a strong plus.",
+      "Knowledge of the semiconductor product development lifecycle from test specification through production release.",
+      "Excellent communication in English, with German a plus, and a can-do attitude in a multicultural, international customer environment.",
+    ] },
   { title: "Principal DFT Engineer", loc: "Bangalore, India", type: "Full-time, hybrid",
     sum: "Anchor a growing DFT team on complex SoCs. Own top-level DFT architecture and implementation, drive Scan, MBIST, boundary scan and SSN across the full chip, set the methodology, and take ATPG and coverage to closure. Expert Siemens Tessent experience is central to this role.",
-    skills: ["Siemens Tessent (expert)", "Scan, MBIST, Bscan, SSN", "ATPG and coverage closure", "12+ years, SoC top-level"] },
+    skills: ["Siemens Tessent (expert)", "Scan, MBIST, Bscan, SSN", "ATPG and coverage closure", "12+ years, SoC top-level"],
+    resp: [
+      "Own top-level DFT architecture and implementation for complex SoCs, from DFT planning through silicon bring-up, in alignment with design architecture, product requirements and the overall test strategy.",
+      "Lead top-level Scan, MBIST, boundary scan (Bscan) and Streaming Scan Network (SSN) implementation, integration and validation across the full chip.",
+      "Architect scan and compression strategy, MBIST and LBIST integration, JTAG and IJTAG access networks, on-chip clock control and low-power test intent at chip level.",
+      "Drive ATPG setup, pattern generation, pattern validation and coverage closure, and own the plan to reach coverage and pattern-count targets across fault models.",
+      "Analyze coverage gaps, untestable faults, X-sources, test power and test-mode constraints, and drive practical closure with design, verification and physical design teams.",
+      "Define DFT specifications, test-mode definitions, constraints, integration guidelines and sign-off checklists, and hold the team to them.",
+      "Set and improve the DFT methodology, reusable flows, automation and quality standards, with a strong bias toward repeatability.",
+      "Collaborate across RTL design, verification, physical design, product engineering and ATE teams to keep DFT intent intact from RTL through silicon test.",
+      "Lead silicon bring-up, pattern correlation, diagnostics, failure analysis and production debug for DFT-related issues.",
+      "Provide technical leadership, design reviews, mentoring and direction to senior and mid-level DFT engineers.",
+      "Act as the primary DFT technical interface to the customer, representing status, risks and recommendations.",
+    ],
+    quals: [
+      "12+ years of hands-on DFT experience across architecture, implementation, ATPG, DFT verification and silicon test support at the SoC level.",
+      "Expert-level Siemens Tessent experience is mandatory, including the Tessent toolchain for Scan, MBIST, boundary scan, IJTAG and SSN.",
+      "Proven track record owning top-level DFT integration on complex SoCs, not only block or IP-level work.",
+      "Deep understanding of scan architecture, test compression, MBIST and LBIST, JTAG and IJTAG, boundary scan, SSN, on-chip clocking for test and fault models.",
+      "Strong ATPG and coverage-closure expertise, including pattern optimization, test power, X-handling and diagnosis.",
+      "Solid RTL knowledge in Verilog and SystemVerilog, and practical command of SoC integration, clocking, reset, low-power and timing constraints as they relate to DFT.",
+      "Strong debug capability across DFT rule violations, coverage limitations, simulation mismatches, pattern failures and silicon correlation.",
+      "Scripting and automation in Tcl and Python (Perl or shell a plus) for flow development and regression.",
+      "Experience leading or mentoring DFT engineers and interfacing directly with customers and cross-functional teams.",
+      "Excellent communication in English and the ability to work in a multicultural, international team.",
+      "A can-do attitude, engineering discipline and a genuine willingness to share knowledge and raise the team's bar.",
+    ] },
   { title: "Design for Test (DFT) Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
-    sum: "Drive DFT architecture and implementation: ATPG, scan, MBIST, and JTAG, through coverage closure and silicon bring-up.",
-    skills: ["ATPG and scan", "MBIST and JTAG", "Tessent, TestMAX", "SystemVerilog"] },
+    sum: "Implement DFT across IP and SoC level, from architecture and scan insertion through ATPG, coverage closure, silicon bring-up support and production debug.",
+    skills: ["ATPG and scan", "MBIST, JTAG, boundary scan", "Tessent, TestMAX, Modus", "5 to 7 years"],
+    resp: [
+      "Define and implement DFT requirements for new IPs, subsystems and SoCs, aligned with design architecture, product requirements and test strategy.",
+      "Work on scan architecture, scan insertion, test compression, MBIST and LBIST integration, JTAG and IJTAG access, boundary scan and on-chip clock control where applicable.",
+      "Run DFT rule checks, testability analysis, scan stitching validation, ATPG setup, pattern generation, pattern validation and coverage closure.",
+      "Analyze coverage gaps, untestable faults, X-sources, pattern count, test power and test-mode constraints, then drive practical closure with design and verification teams.",
+      "Create and review DFT specifications, test-mode definitions, constraints, integration guidelines and sign-off checklists.",
+      "Collaborate with RTL design, verification, physical design, product engineering and ATE teams to keep DFT intent intact through implementation and silicon test.",
+      "Support silicon bring-up, pattern correlation, diagnostics, failure analysis and production debug.",
+      "Develop scripts and automation to improve DFT quality, regression, reporting and repeatability.",
+      "Contribute to methodology improvement, reusable flows, documentation and internal training.",
+    ],
+    quals: [
+      "5 to 7 years of hands-on experience in DFT implementation, ATPG, DFT verification or silicon test support.",
+      "Strong understanding of scan, ATPG, test compression, MBIST, JTAG and boundary scan, and fault models.",
+      "Experience with one or more DFT and ATPG tools such as Siemens Tessent, Synopsys TestMAX, DFT Compiler or FastScan, or Cadence Modus.",
+      "Good RTL knowledge in Verilog and SystemVerilog, and practical understanding of SoC integration, clocking, reset, low-power and timing constraints.",
+      "Ability to debug DFT rule violations, coverage limitations, simulation mismatches, pattern failures and silicon correlation.",
+      "Scripting in Tcl, Python, Perl or shell for automation and flow development.",
+      "Knowledge of the semiconductor product development lifecycle from concept through silicon bring-up and production release.",
+      "Excellent communication in English and the ability to work in a multicultural, international team.",
+      "A can-do attitude, engineering discipline and willingness to share knowledge with the wider team.",
+    ] },
+  { title: "RTL Designer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
+    sum: "Turn architecture and product intent into clean, synthesizable and verification-ready RTL for IPs, subsystems and SoCs, and see it through to design closure.",
+    skills: ["Verilog, SystemVerilog", "Microarchitecture to RTL", "CDC, RDC, low-power, timing", "AMBA AXI, AHB, APB"],
+    resp: [
+      "Develop microarchitecture from product requirements, architecture specifications and system constraints.",
+      "Design and implement synthesizable RTL for IP blocks, subsystems, interfaces, control logic, datapaths and SoC integration components.",
+      "Work with architecture, design verification, DFT, physical design, firmware and product engineering to close design intent across the full flow.",
+      "Create clear design specifications, interface definitions, register descriptions and implementation documentation.",
+      "Run and debug lint, CDC and RDC, reset checks, synthesis, low-power checks and basic timing closure.",
+      "Support design verification through test plan review, waveform debug, assertion review, coverage analysis and issue resolution.",
+      "Integrate third-party and internal IPs, resolving interface, configuration, clocking and reset issues.",
+      "Support ECOs, design changes, bug fixes and silicon bring-up investigations that need RTL-level analysis.",
+      "Automate routine design, integration, reporting and quality checks.",
+    ],
+    quals: [
+      "5 to 10 years of hands-on RTL design experience for semiconductor IPs, ASICs, SoCs or mixed-signal control logic.",
+      "Strong Verilog and SystemVerilog coding, and command of synthesizable design practices.",
+      "Good understanding of microarchitecture, timing, clock and reset structures, CDC and RDC, low-power and design-for-test implications.",
+      "Experience with common SoC interfaces such as AMBA AXI, AHB and APB, SPI, I2C, UART, GPIO and memory interfaces.",
+      "Experience with EDA flows for lint, CDC, synthesis, simulation and basic timing constraint development.",
+      "Ability to write clean, reusable, reviewable RTL with strong attention to corner cases.",
+      "Scripting in Python, Tcl, Perl or shell for automation and flow support.",
+      "Knowledge of the semiconductor product development lifecycle and cross-functional design closure.",
+      "Excellent communication in English and the ability to work in a multicultural, international team, with a willingness to mentor.",
+    ] },
   { title: "Design Verification Engineer", loc: "Bangalore, Doha", type: "Full-time, hybrid",
-    sum: "Verify digital blocks and SoCs: build testbenches, drive coverage, and take designs to closure in SystemVerilog and UVM.",
-    skills: ["SystemVerilog", "UVM", "Coverage closure", "Simulation and debug"] },
+    sum: "Build robust verification environments, drive coverage closure, and help ensure complex designs are functionally correct before tape-out, in SystemVerilog and UVM.",
+    skills: ["SystemVerilog, UVM", "Constrained-random, coverage", "Assertions, formal", "5 to 10 years"],
+    resp: [
+      "Create verification strategies and test plans from architecture, design specifications and product requirements.",
+      "Develop reusable SystemVerilog and UVM testbenches, agents, monitors, scoreboards, checkers and coverage models.",
+      "Build constrained-random and directed tests for IP, subsystem and SoC-level verification.",
+      "Define and close functional, code and assertion coverage against agreed verification goals.",
+      "Write, review and debug SystemVerilog Assertions, and use formal verification where suitable.",
+      "Integrate protocol VIPs and develop verification components for standard and proprietary interfaces.",
+      "Debug RTL and testbench failures, waveform mismatches, coverage holes, regression failures and corner cases.",
+      "Collaborate with RTL design, architecture, DFT, firmware and physical implementation teams to resolve issues early.",
+      "Automate regressions, triage, reporting and verification dashboards for speed and repeatability.",
+    ],
+    quals: [
+      "5 to 10 years of hands-on design verification experience for semiconductor IPs, ASICs or SoCs.",
+      "Strong SystemVerilog and UVM experience: testbench architecture, sequences, scoreboards, coverage and reusable components.",
+      "Good understanding of digital design fundamentals, RTL behavior, clocking, reset, low-power and SoC integration.",
+      "Experience with coverage-driven and constrained-random verification, directed testing and regression management.",
+      "Experience with assertions, functional and code coverage, debug tools and waveform analysis.",
+      "Knowledge of one or more standard interfaces such as AMBA AXI, AHB and APB, PCIe, Ethernet, USB, MIPI, memory interfaces, SPI, I2C or UART.",
+      "Scripting in Python, Tcl, Perl or shell for automation, regression control and reporting.",
+      "Experience with major simulation and verification tools from Siemens, Synopsys or Cadence is a plus.",
+      "Excellent communication in English and the ability to work in a multicultural, international team, with structured debugging and a willingness to mentor.",
+    ] },
 ];
 ---
 <Base
@@ -86,20 +204,55 @@ const roles = [
       <div class="roles">
         {roles.map((r) => (
           <div class="role rv">
-            <div class="rh">
-              <div><div class="rtitle">{r.title}</div><div class="rmeta">{r.loc}  ·  {r.type}</div></div>
-              <a class="btn btn-p" href="/contact/">Apply</a>
-            </div>
-            <div class="rbody">
-              <p class="rsum">{r.sum}</p>
-              <div class="rskills">{r.skills.map((s) => <span class="pill">{s}</span>)}</div>
-            </div>
+            <details class="roledd">
+              <summary class="rhead">
+                <div>
+                  <div class="rtitle">{r.title}</div>
+                  <div class="rmeta">{r.loc}  ·  {r.type}</div>
+                </div>
+                <span class="rchev" aria-hidden="true">+</span>
+              </summary>
+              <div class="rdetail">
+                <p class="rsum">{r.sum}</p>
+                <div class="rskills">{r.skills.map((s) => <span class="pill">{s}</span>)}</div>
+                {r.resp && (
+                  <div class="rblock">
+                    <div class="rblbl">What you will do</div>
+                    <ul class="rlist">{r.resp.map((x) => <li>{x}</li>)}</ul>
+                  </div>
+                )}
+                {r.quals && (
+                  <div class="rblock">
+                    <div class="rblbl">What you will need</div>
+                    <ul class="rlist">{r.quals.map((x) => <li>{x}</li>)}</ul>
+                  </div>
+                )}
+                <a class="btn btn-p" href="/contact/">Apply for this role</a>
+              </div>
+            </details>
           </div>
         ))}
       </div>
       <p class="svc-lead rv" style="margin-top:1.6rem">If your experience and mindset align with SilTest, we would love to hear from you. Send your CV and a short cover letter to <b>careers@siltest.com</b>, or <a class="link-arrow" href="/contact/">introduce yourself here <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a></p>
     </div>
   </section>
+
+  <style>
+    .roledd > summary.rhead { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .roledd > summary.rhead::-webkit-details-marker { display: none; }
+    .roledd > summary.rhead::marker { content: ""; }
+    .roledd .rchev { font-family: var(--mono); font-size: 24px; line-height: 1; color: var(--blue); flex: none; transition: transform .2s ease; }
+    .roledd[open] .rchev { transform: rotate(45deg); }
+    .roledd > summary.rhead:hover .rtitle { color: var(--blue); }
+    .rdetail { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border2, #ECE9E1); }
+    .rdetail .rskills { margin-top: .9rem; }
+    .rblock { margin-top: 1.3rem; }
+    .rblbl { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3, #8A93A8); margin-bottom: .6rem; }
+    .rlist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .55rem; }
+    .rlist li { position: relative; padding-left: 1.2rem; font-size: 14.5px; color: var(--ink2, #5A6480); line-height: 1.55; }
+    .rlist li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 2px; background: var(--blue); }
+    .rdetail .btn { margin-top: 1.4rem; }
+  </style>
 
   <Footer />
 </Base>
