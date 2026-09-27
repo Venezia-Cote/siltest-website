@@ -238,20 +238,80 @@ const roles = [
   </section>
 
   <style>
-    .roledd > summary.rhead { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    /* role cards: generous, even breathing room inside the border */
+    .roles { display: flex; flex-direction: column; gap: 18px; }
+    .role {
+      padding: 1.6rem 1.85rem;
+      border-radius: 14px;
+      border: 1px solid var(--border, #E1E5EC);
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .role:hover { border-color: #C7CEDA; }
+    .role:has(details[open]) {
+      border-color: var(--blue);
+      box-shadow: var(--shh, 0 12px 34px rgba(1, 12, 43, .09));
+    }
+    .roledd > summary.rhead {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
     .roledd > summary.rhead::-webkit-details-marker { display: none; }
     .roledd > summary.rhead::marker { content: ""; }
-    .roledd .rchev { font-family: var(--mono); font-size: 24px; line-height: 1; color: var(--blue); flex: none; transition: transform .2s ease; }
+    .rhead .rtitle { line-height: 1.3; }
+    .rhead .rmeta { margin-top: 6px; }
+    .roledd .rchev {
+      font-family: var(--mono);
+      font-size: 26px;
+      line-height: 1;
+      color: var(--blue);
+      flex: none;
+      margin-top: 1px;
+      transition: transform .2s ease;
+    }
     .roledd[open] .rchev { transform: rotate(45deg); }
     .roledd > summary.rhead:hover .rtitle { color: var(--blue); }
-    .rdetail { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border2, #ECE9E1); }
+    .rdetail {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border2, #ECE9E1);
+    }
     .rdetail .rskills { margin-top: .9rem; }
-    .rblock { margin-top: 1.3rem; }
-    .rblbl { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3, #8A93A8); margin-bottom: .6rem; }
-    .rlist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .55rem; }
-    .rlist li { position: relative; padding-left: 1.2rem; font-size: 14.5px; color: var(--ink2, #5A6480); line-height: 1.55; }
-    .rlist li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 2px; background: var(--blue); }
-    .rdetail .btn { margin-top: 1.4rem; }
+    .rblock { margin-top: 1.6rem; }
+    .rblbl {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink3, #8A93A8);
+      margin-bottom: .7rem;
+    }
+    .rlist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .6rem; }
+    .rlist li {
+      position: relative;
+      padding-left: 1.3rem;
+      font-size: 14.5px;
+      color: var(--ink2, #5A6480);
+      line-height: 1.6;
+    }
+    .rlist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .58em;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: var(--blue);
+    }
+    .rdetail .btn { margin-top: 1.7rem; }
+    @media (max-width: 640px) {
+      .role { padding: 1.25rem 1.3rem; }
+      .roledd > summary.rhead { gap: 14px; }
+    }
   </style>
 
   <Footer />
