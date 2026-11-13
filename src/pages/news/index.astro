@@ -24,7 +24,9 @@ const [lead, ...rest] = sorted;
   <section style="padding-top:0">
     <div class="wrap">
       <a class="postlead rv" href={`/news/${lead.slug}`}>
-        {lead.image && <div class="pl-img"><img src={lead.image} alt={lead.imageAlt} loading="lazy" /></div>}
+        {lead.image
+          ? <div class="pl-img"><img src={lead.image} alt={lead.imageAlt} /></div>
+          : <div class="pl-img pc-abstract"><span>{lead.category}</span></div>}
         <div class="pl-body">
           <div class="pmeta"><span class="pcat">{lead.category}</span><span>{lead.dateLabel}</span><span>{lead.readingTime}</span></div>
           <h2>{lead.title}</h2>
