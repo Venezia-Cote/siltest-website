@@ -5,9 +5,8 @@ export const courses = [
     slug: "jmp-yieldoptix",
     level: "Intermediate",
     track: "analysis",
-    nextDate: "30 Sep to 2 Oct",
     enrolment: {
-      open: true,
+      open: false, // set to true and update the dates below to reopen enrolment
       dateLabel: "30 September to 2 October 2026",
       dateShort: "30 Sep to 2 Oct 2026",
       startDateISO: "2026-09-30",
@@ -30,7 +29,7 @@ export const courses = [
     tagline: "Unlock test and yield insights like never before",
     overview:
       "A three-day, hands-on course on JMP and YieldOptiX. Learn to analyze semiconductor test and yield data, speed up debug, and make better decisions. It prepares you to work as a certified yield analyst.",
-    upcoming: true,
+    upcoming: false,
     glance: { duration: "3 days, 3 hours a day", format: "Theory plus guided labs", delivery: "Online, live with the instructor", language: "English" },
     audience: [
       "Test engineers and technicians",
@@ -89,9 +88,8 @@ export const courses = [
     slug: "basics-of-semiconductor-testing",
     level: "Foundation",
     track: "core",
-    nextDate: "5 to 8 October",
     enrolment: {
-      open: true,
+      open: false, // set to true and update the dates below to reopen enrolment
       dateLabel: "5 to 8 October 2026",
       dateShort: "5 to 8 Oct 2026",
       startDateISO: "2026-10-05",
@@ -114,7 +112,7 @@ export const courses = [
     tagline: "Explore the world of chip testing",
     overview:
       "A foundational course on why chips are tested and what it takes to become a test engineer. It covers the role of testing in reliability, performance, and meeting industry standards, and the paths into a test career.",
-    upcoming: true,
+    upcoming: false,
     glance: { duration: "4 days, 3 hours a day", format: "Theory plus practical examples", delivery: "Online, live with the instructor", language: "English" },
     audience: [
       "New hires in the semiconductor industry",
@@ -211,9 +209,8 @@ export const courses = [
     slug: "dft-for-managers",
     level: "Leadership",
     track: "leadership",
-    nextDate: "28 + 29 September",
     enrolment: {
-      open: true,
+      open: false, // set to true and update the dates below to reopen enrolment
       dateLabel: "28 and 29 September 2026",
       dateShort: "28 + 29 Sep 2026",
       startDateISO: "2026-09-28",
@@ -237,7 +234,7 @@ export const courses = [
     tagline: "Build smarter test strategies",
     overview:
       "A two-day course that gives people and program managers a strategic and technical grasp of Design for Test and the wider Design for Excellence ideas. Learn to work well with design and test teams, weigh trade-offs, and make informed decisions.",
-    upcoming: true,
+    upcoming: false,
     glance: { duration: "2 days, 4 hours a day", format: "Lecture, walkthroughs, and case studies", delivery: "Online, or on-site for teams", language: "English" },
     audience: [
       "Engineering managers",
@@ -282,7 +279,7 @@ export const courses = [
     certificate:
       "Participants receive a DfT for Managers credential, certified by SilTest, after a short assessment.",
     faq: [
-      { q: "Is this online or in person?", a: "The 28 and 29 September session runs online, live with the instructor, 14:00 to 18:00 CET on both days. For a private team session we can also come on-site." },
+      { q: "Is this online or in person?", a: "Open sessions run online, live with the instructor. For a private team session we can also come on-site." },
       { q: "How technical is it?", a: "It is built for technical managers. Some familiarity with product development helps, but it does not assume a DfT engineering background." },
       { q: "Do you offer team pricing?", a: "Yes. Reduced per-seat rates apply for several colleagues, and we can run a private session on your own workflows. Ask us for a quote." },
     ],
