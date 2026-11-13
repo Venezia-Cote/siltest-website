@@ -1,6 +1,45 @@
 // Blog and news posts, migrated from the Wix site so the content is self-contained.
 export const posts = [
   {
+    slug: "german-indian-startup-connector-2026-winner",
+    title: "SilTest wins first place at the German-Indian StartUp Connector 2026 in Munich",
+    seoTitle: "SilTest Wins German-Indian StartUp Connector 2026",
+    date: "2026-09-30",
+    dateLabel: "30 September 2026",
+    category: "Awards",
+    readingTime: "3 min read",
+    image: "/media/photos/gibf-2026-award.jpg",
+    imageAlt: "Sameer Saran of SilTest receiving first place on stage at the German-Indian StartUp Connector 2026 in Munich",
+    excerpt:
+      "SilTest won first place among eight scale-ups at the German-Indian StartUp Connector 2026 in Munich, pitching VISTAR, its AI platform for chip testing.",
+    body: `
+<p><b>Munich, Germany, 30 September 2026</b></p>
+<p>SilTest Semiconductors won first place in the pitch competition at the <b>German-Indian StartUp Connector 2026</b> in Munich. Start2 Group hosted the event together with the German-Indian Business Forum. Eight scale-ups pitched in front of a jury and more than 80 guests from the startup, investment, and corporate ecosystem.</p>
+<p>Second place went to OrbitAID Aerospace for its work on in-orbit servicing for satellites. Congratulations to their team.</p>
+
+<h2>About the German-Indian StartUp Connector</h2>
+<p>The StartUp Connector puts German and Indian growth companies in front of investors, corporates, and ecosystem partners from both countries. This year's pitches covered deep tech, AI, sustainability, aerospace, semiconductors, and e-mobility. Panels on stage looked at cross-border scaling, AI, corporate innovation, and market access.</p>
+
+<h2>What we pitched: VISTAR</h2>
+<p>Sameer Saran, Founder and CEO, presented <a href="/vistar/">VISTAR</a>, the SilTest AI platform for semiconductor test and production. The organizers recognized SilTest for its work in semiconductor testing and hardware reliability.</p>
+<p>Every chip goes through testing before it ships. Test engineers spend a large part of their week on manual work: writing and converting test programs, debugging failures, and digging through test data. VISTAR takes over much of that work, so the same team ships more. It runs on the customer's own infrastructure, and the data stays inside their network.</p>
+<div class="postgallery"><figure><img src="/media/photos/gibf-2026-pitch.jpg" alt="Sameer Saran pitching VISTAR on stage at the German-Indian StartUp Connector 2026 in Munich" loading="lazy" /><figcaption>Sameer Saran pitching VISTAR in Munich</figcaption></figure></div>
+
+<blockquote>Winning in a room full of strong companies from very different fields means a lot to our team. Chip testing rarely gets the spotlight, yet it decides how fast new products reach the market. Thank you to the jury and the organizers. We look forward to building on the conversations that started in Munich.
+<cite>Sameer Saran, Founder and CEO, SilTest Semiconductors</cite></blockquote>
+
+<h2>Why Germany and India matter to us</h2>
+<p>SilTest works across both countries. Our headquarters is in Kleve, Germany, and we have a team in Bangalore, India, alongside our office in Doha, Qatar. Events like the StartUp Connector help us meet the investors, partners, and customers building semiconductor capability in both markets.</p>
+
+<h2>Thank you</h2>
+<p>Thank you to the German-Indian Business Forum and Start2 Group for a well-run day, to the sponsors German Indian Innovation Corridor (GIIC) and Plug and Play, and to the jury: Jonas Fahl, Venkateswara Rao Palakodeti, and Abhinav B. Thank you also to the other seven companies that pitched.</p>
+
+<h2>About SilTest Semiconductors</h2>
+<p>SilTest Semiconductors builds and licenses AI tools that make semiconductor chip testing and production faster and less manual. The portfolio includes the VISTAR platform, <a href="/yieldoptix/">YieldOptiX</a>, <a href="/defectoptix/">DefectOptiX</a>, and <a href="/stdf-quick-viewer/">STDF Quick Viewer</a>, supported by engineering services and <a href="/academy/">SilTest Academy</a>. The company has offices in Kleve, Doha, and Bangalore.</p>
+<p><a href="/vistar/">Explore VISTAR</a> &nbsp;·&nbsp; <a href="/contact/">Talk to us</a></p>
+`,
+  },
+  {
     slug: "wellmatix-mou-eu-korea",
     title: "SilTest and Wellmatix sign MoU to strengthen EU and Korea semiconductor collaboration",
     date: "2026-02-11",
