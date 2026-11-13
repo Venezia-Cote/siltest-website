@@ -9,17 +9,29 @@ export function getStaticPaths() {
 }
 const { post } = Astro.props;
 const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+const pageUrl = `https://siltest.com/news/${post.slug}/`;
 const article = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": post.category === "Press release" || post.category === "Awards" ? "NewsArticle" : "Article",
   headline: post.title,
   datePublished: post.date,
-  author: { "@type": "Organization", name: "SilTest Semiconductors GmbH" },
-  publisher: { "@type": "Organization", name: "SilTest Semiconductors GmbH" },
+  dateModified: post.dateModified || post.date,
+  mainEntityOfPage: pageUrl,
+  ...(post.image ? { image: new URL(post.image, "https://siltest.com").href } : {}),
+  author: { "@type": "Organization", name: "SilTest Semiconductors GmbH", url: "https://siltest.com" },
+  publisher: {
+    "@type": "Organization",
+    name: "SilTest Semiconductors GmbH",
+    logo: { "@type": "ImageObject", url: "https://siltest.com/logos/lockup.png" },
+  },
   description: post.excerpt,
 };
 ---
-<Base title={`${post.title} | SilTest Semiconductors`} description={post.excerpt} breadcrumbLastLabel={post.title}>
+<Base
+  title={`${post.seoTitle || post.title} | SilTest Semiconductors`}
+  description={post.excerpt}
+  ogImage={post.image || undefined}
+  breadcrumbLastLabel={post.title}>
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(article)} slot="head" />
 
